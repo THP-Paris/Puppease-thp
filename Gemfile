@@ -68,3 +68,4 @@ gem 'faker'
 gem 'letter_opener'
 gem 'dotenv-rails'
 gem 'friendly_id'
+gem "aws-sdk-s3", require: false
