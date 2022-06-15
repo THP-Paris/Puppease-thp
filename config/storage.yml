@@ -35,8 +35,8 @@ local:
 
 digital_ocean:
   service: S3
-  access_key_id: <%= SPACES_ACCESS_KEY_ID %>
-  secret_access_key: <%= SPACES_SECRET_ACCESS_KEY %>
-  region: <%= SPACES_REGION %>
-  bucket: <%= SPACES_BUCKET_NAME %>
-  endpoint: <%= SPACES_ENDPOINT %>
+  access_key_id: <%= ENV['SPACES_ACCESS_KEY_ID'] %>
+  secret_access_key: <%= ENV['SPACES_SECRET_ACCESS_KEY'] %>
+  region: <%= ENV['SPACES_REGION'] %>
+  bucket: <%= ENV['SPACES_BUCKET_NAME'] %>
+  endpoint: <%= ENV['SPACES_ENDPOINT'] %>
