@@ -14,5 +14,5 @@ class User < ApplicationRecord
          end
 
          extend FriendlyId
-         friendly_id :name, use: :slugged
+         friendly_id :username, use: :slugged
 end
