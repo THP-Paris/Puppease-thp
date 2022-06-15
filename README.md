@@ -1,24 +1,41 @@
-# README
+# Puppease <br>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Puppease est un site de mise en relation de propriétaire de chien voulant trouver un partenaire à celui-ci dans le but d'avoir une descendance.
+L'utilisateur doit donc s'incrire sur le site pour avoir accès a une liste de chiens qu'il peut ensuite explorer selon différents critères.
+Il peut ensuite créer un profil à son chien et prendre contact avec d'autres propriétaires.
 
-Things you may want to cover:
+Lien vers le repository original pour voir les pull request et le travail en équipe (https://github.com/THP-Paris/Puppease-thp/projects/1)
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
+Le site est en live ici (https://puppease-staging.herokuapp.com/)
 
-* Database creation
+Pour une utilisation en local
 
-* Database initialization
+Utilisez la commande suivante avant de lancer le programme 
 
-* How to run the test suite
+```ruby
+ bundle install
+ rails db:create
+ rails db:migrate
+ rails db:seed
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Lancer le programme
 
-* Deployment instructions
+Il ne vous reste plus qu'à tester l'ensemble des fonctionnalités de l'application passer commande, voir les orders, etc.. ! 
 
-* ...
+```ruby
+ rails server 
+```
+
+Rendez-vous ensuite sur le site en local (http://localhost:3000/)
+Enjoy !
+
+
+
+
+## Crédit 
+[Eva Laurent]<br>
+[Laurence Perdereau]<br>
+[Brian Variengien]<br>
