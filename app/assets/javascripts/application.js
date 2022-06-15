@@ -12,4 +12,8 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require_tree .
+//= require bootstrap.bundle.min
+//= require simplebar.min
+//= require smooth-scroll.polyfills
+//= require tiny-slider
+//= require flatpickr.min
