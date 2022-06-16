@@ -13,9 +13,13 @@ class DogsController < ApplicationController
 
   def create
     @dog = Dog.new(dog_params)
-    if Dog.save 
+    @dog.user_id = current_user.id
+    if @dog.save 
       redirect_to root_path
     else
+      puts '$'*50
+      puts @event.errors.messages
+      puts '$'*50
       render 'new'
     end
   end
