@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_15_150031) do
+ActiveRecord::Schema.define(version: 2022_06_16_131905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,22 @@ ActiveRecord::Schema.define(version: 2022_06_15_150031) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "dogs", force: :cascade do |t|
+    t.string "name"
+    t.datetime "birth_date"
+    t.integer "gender"
+    t.text "description"
+    t.integer "vaccine"
+    t.integer "lof"
+    t.integer "reward"
+    t.integer "breed"
+    t.integer "color"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_dogs_on_user_id"
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -58,6 +74,7 @@ ActiveRecord::Schema.define(version: 2022_06_15_150031) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "slug"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true

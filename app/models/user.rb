@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :dogs
 
   has_one_attached :avatar
   # Include default devise modules. Others available are:
@@ -15,4 +16,5 @@ class User < ApplicationRecord
 
          extend FriendlyId
          friendly_id :username, use: :slugged
+
 end

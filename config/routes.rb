@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'dogs/index'
+  get 'dogs/show'
+  get 'dogs/create'
+  get 'dogs/update'
+  get 'dogs/destroy'
   devise_for :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :users do
