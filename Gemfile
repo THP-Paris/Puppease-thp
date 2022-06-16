@@ -69,3 +69,4 @@ gem 'letter_opener'
 gem 'dotenv-rails'
 gem 'friendly_id'
 gem 'rails_admin'
+gem "aws-sdk-s3", require: false
