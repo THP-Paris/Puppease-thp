@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :users do
     resources :avatars
   end
-  resources :dogs
+  resources :dogs do
+    resources :avatars
+  end
 
 
 root 'static_pages#home'

@@ -15,7 +15,7 @@ class DogsController < ApplicationController
     @dog = Dog.new(dog_params)
     @dog.user_id = current_user.id
     if @dog.save 
-      redirect_to root_path
+      redirect_to dog_path(@dog)
     else
       puts '$'*50
       puts @event.errors.messages
@@ -33,7 +33,7 @@ class DogsController < ApplicationController
   private
 
   def dog_params
-    params.require(:dog).permit(:name, :birth_date, :gender, :description, :vaccine, :lof, :reward, :breed, :color)
+    params.require(:dog).permit(:name, :birth_date, :gender, :description, :vaccine, :lof, :reward, :breed, :color, :avatar)
   end
 
 end
