@@ -74,7 +74,7 @@
                   <li><a class="dropdown-item" href="city-guide-account-favorites.html">Ma doglist</a></li>
                   <li><a class="dropdown-item" href="city-guide-account-reviews.html">Mes animaux</a></li>
                   <li><a class="dropdown-item" href="city-guide-account-notifications.html">Notifications</a></li>
-                  <li><a class="dropdown-item" href="city-guide-account-notifications.html">Notifications</a></li>
+                  <li><%= link_to "Se deconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
                 </ul>
               </li>
               <%end%>
