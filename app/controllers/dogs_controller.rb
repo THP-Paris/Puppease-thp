@@ -1,6 +1,8 @@
 class DogsController < ApplicationController
   def index
-    @dog = Dog.all
+    @dogs = Dog.all
+    @dog = Dog.all.with_attached_pictures
+
   end
 
   def show
