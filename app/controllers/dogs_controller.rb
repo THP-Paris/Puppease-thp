@@ -4,7 +4,12 @@ class DogsController < ApplicationController
   end
 
   def show
-    @dog = Dog.find(params[:id])
+    @dog = Dog.friendly.find(params[:id])
+    @dog = Dog.with_attached_pictures.friendly.find(params[:id])
+    
+    
+    
+
   end
 
   def new
@@ -14,6 +19,7 @@ class DogsController < ApplicationController
   def create
     @dog = Dog.new(dog_params)
     @dog.user_id = current_user.id
+
     if @dog.save 
       redirect_to dog_path(@dog)
     else
@@ -25,6 +31,8 @@ class DogsController < ApplicationController
   end
 
   def update
+    @dog = Dog.friendly.find(params[:id])
+
   end
 
   def destroy
@@ -33,7 +41,7 @@ class DogsController < ApplicationController
   private
 
   def dog_params
-    params.require(:dog).permit(:name, :birth_date, :gender, :description, :vaccine, :lof, :reward, :breed, :color, :avatar)
+    params.require(:dog).permit(:name, :birth_date, :gender, :description, :vaccine, :lof, :reward, :breed, :color, pictures: [])
   end
 
 end

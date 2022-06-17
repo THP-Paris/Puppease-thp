@@ -13,7 +13,7 @@
 <div class="mb-4">
 
 <%= form.label :male_ou_femelle %><br/>
-<select class="form-control" <%= form.select :gender, Dog::GENDERS %>
+<select class="form-control" <%= form.select :gender, Dog::genders.keys %>
 </div>
 
 <div class="mb-4">
@@ -28,41 +28,39 @@
 
 <div class="mb-4">
 <%= form.label :race %><br/>
-<select class="form-control"<%= form.select :breed, Dog::BREEDS %>
+<select class="form-control"<%= form.select :breed, Dog::breeds.keys %>
 </div>
 
 <div class="mb-4">
 <%= form.label :Pelage%><br/>
-<select class="form-control"<%= form.select :color, Dog::COLORS %>
+<select class="form-control"<%= form.select :color, Dog.colors.keys %>
 </div>
 
 <div class="mb-4">
 <%= form.label :LOF %><br/>
-<select class="form-control"<%= form.select :lof, Dog::LOFS %>
+<select class="form-control"<%= form.select :lof, Dog::lofs.keys %>
 </div>
 
 <div class="mb-4">
-<%= form.label :vacciné%><br/>
-<select class="form-control"<%= form.select :vaccine, Dog::VACCINES %>
+<%= form.label :vaccine %><br/>
+<select class="form-control"<%= form.select :vaccine, Dog::vaccines.keys %>
 </div>
+
 
 <div class="mb-4">
 <%= form.label :récompensé%><br/>
-<select class="form-control"<%= form.select :reward, Dog::REWARDS %>
+<select class="form-control"<%= form.select :reward, Dog::rewards.keys %>
 </div>
 
-<%= form_tag do %>
-    <%= file_field_tag :avatar %>
-    <%= submit_tag "Photo" %>
-  <% end %>
+
+
+<%= form.file_field :pictures, multiple: true %><br>
 </br>
-<% end %>
 
 <div class="actions">
 <button class="btn btn-primary btn-lg rounded-pill w-100" type="submit"><%= "Inscrire mon chien" %></button>
 </div>
 
-
-
+<% end %>
 
 </div>
