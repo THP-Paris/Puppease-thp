@@ -9,3 +9,6 @@
 <%= link_to "inscrire mon chien", new_dog_path %>
 <%= link_to "modifier mes infos",  edit_user_registration_path %>
 
+<% if user_signed_in? %>
+<%= link_to "voir ma page profil", user_path(current_user.id) %>
+<% end%>
