@@ -1,0 +1,86 @@
+<!--
+<%= link_to "se connecter", new_user_session_path %> 
+
+<%= link_to "s'inscrire", new_user_registration_path %>
+
+<%= link_to "se deconnecter", destroy_user_session_path, method: :delete %> 
+
+<%= link_to "modifier mes infos",  edit_user_registration_path %>
+-->
+      <!-- Sign In Modal-->
+      <div class="modal fade" id="signin-modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body px-2 py-2 py-sm-4">
+              <button class="btn-close position-absolute top-0 end-0 mt-3 me-3" type="button" data-bs-dismiss="modal"></button>
+              <div class="row mx-0 align-items-center">
+                  <form class="needs-validation" novalidate>
+                    <div class="mb-4">
+                      <label class="form-label mb-2" for="signin-email">Email address</label>
+                      <input class="form-control" type="email" id="signin-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="mb-4">
+                      <div class="d-flex align-items-center justify-content-between mb-2">
+                        <label class="form-label mb-0" for="signin-password">Password</label><a class="fs-sm" href="#">Forgot password?</a>
+                      </div>
+                      <div class="password-toggle">
+                        <input class="form-control" type="password" id="signin-password" placeholder="Enter password" required>
+                        <label class="password-toggle-btn" aria-label="Show/hide password">
+                          <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                        </label>
+                        <label>
+                          <input type="checkbox" value="remember-me"> Remember me
+                        </label>
+                      </div>
+                    </div>
+                    <button class="btn btn-primary btn-lg rounded-pill w-100" type="submit"<%= link_to "se connecter", new_user_session_path %>></button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end of modal -->
+
+<main class="page-wrapper">
+      <!-- Navbar-->
+      <header class="navbar navbar-expand-lg navbar-light fixed-top" data-scroll-header>
+        <div class="container">
+        <%= link_to image_tag("logos/logo_orange.svg", width: '150', height: '40'), root_path, class: "navbar-brand me-3 me-xl-4"%>
+          <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span> 
+          </button>
+            <a class="btn btn-sm text-primary d-none d-lg-block order-lg-3" href="#signin-modal" data-bs-toggle="modal"><i class="fi-user me-2"></i>Se connecter</a>
+            <a class="btn btn-primary btn-sm rounded-pill ms-2 order-lg-3" href="#signup-modal">S'inscrire</a>
+          <div class="collapse navbar-collapse order-lg-2" id="navbarNav">
+            <ul class="navbar-nav navbar-nav-scroll" style="max-height: 35rem;">
+              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Nos chiens</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="city-guide-catalog.html">Par catégorie</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Puppease</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="city-guide-about.html">A propos</a></li>
+                  <li><a class="dropdown-item" href="city-guide-about.html">Blog</a></li>
+                  <li><a class="dropdown-item" href="city-guide-contacts.html">Contact</a></li>
+                </ul>
+              </li>
+              <%if current_user %>
+              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mon compte</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="city-guide-account-info.html">Profil</a></li>
+                  <li><a class="dropdown-item" href="city-guide-account-favorites.html">Ma doglist</a></li>
+                  <li><a class="dropdown-item" href="city-guide-account-reviews.html">Mes animaux</a></li>
+                  <li><a class="dropdown-item" href="city-guide-account-notifications.html">Notifications</a></li>
+                  <li><a class="dropdown-item" href="city-guide-account-info.html">Déconnexion</a></li>
+                </ul>
+              </li>
+              <%end%>
+              <!--<li class="nav-item d-lg-none"><a class="nav-link" href="#signin-modal" data-bs-toggle="modal" data_target="#signin-modal"><i class="fi-user me-2"></i>Sign in</a></li> -->
+            </ul>
+          </div>
+        </div>
+      </header>
+      </main>
