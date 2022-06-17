@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  resources :places
   devise_for :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :users do
     resources :avatars
+  end
+  resources :dogs do
+    resources :pictures
   end
 
 
