@@ -1,0 +1,35 @@
+<h3>Page profil de <%= @dog.name %></h3>
+
+<div class="container">
+  <div class="row">
+
+<%if @dog.pictures.attached?%>
+
+
+<% @dog.pictures.each do |picture| %>
+
+  <div class="col-sm">
+
+  <%= image_tag(picture, :class => "pictures")%>
+
+  </div>
+  <% end %>
+
+<%else%>
+  <p>=== Il n'y a pas encore de photo liée à ce chien ===</p>
+ 
+<%end%>
+
+</div>
+</div>
+</br>
+<h3>Plus d'infos sur <%= @dog.name %></h3>
+
+Genre : <%= @dog.gender %> </br>
+Race : <%= @dog.breed %> </br>
+Date de naissance : <%= (@dog.birth_date).strftime("%d/%m/%Y") %> </br>
+Pelage : <%= @dog.color %> </br>
+Description : <%= @dog.description %> </br>
+Vacciné : <%= @dog.vaccine %> </br>
+Inscrit au LOF <%= @dog.lof %> </br>
+Recompenses :<%= @dog.reward %> </br>
