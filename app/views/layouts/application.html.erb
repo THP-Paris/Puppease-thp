@@ -4,13 +4,15 @@
     <title>Puppease</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
     <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-     </head>
+    <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key='+ENV['GOOGLE_API'] %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield(:head_tags) %>
+    </head>
 
   <body>
     <%= yield %>
-
+    <%= render 'layouts/footer' %>
   </body>
 </html>

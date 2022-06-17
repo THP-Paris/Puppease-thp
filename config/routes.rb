@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-
-  get 'pictures/create'
+  resources :places
   devise_for :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :users do
