@@ -8,6 +8,11 @@
 
 <p id="notice"><%= notice %></p>
 
+<div>
+  <p>
+    <div class="position-relative" id="map"></div>
+</p>
+
 <p>
   <strong>Name:</strong>
   <%= @place.city %>
@@ -27,7 +32,10 @@
 <%= link_to 'Back', places_path %>
 
 <p>
-    <div id="map"></div>
+    <div class="position-fixed" id="map"></div>
 </p>
+
+</div>
+
 
 
