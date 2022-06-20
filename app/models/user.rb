@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :dogs
-  belongs_to :place
+  belongs_to :place, optional: true
+  accepts_nested_attributes_for :place
 
   has_one_attached :avatar
   # Include default devise modules. Others available are:

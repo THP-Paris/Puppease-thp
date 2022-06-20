@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_16_161908) do
+ActiveRecord::Schema.define(version: 2022_06_20_133443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,8 @@ ActiveRecord::Schema.define(version: 2022_06_16_161908) do
     t.decimal "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_places_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -87,16 +89,26 @@ ActiveRecord::Schema.define(version: 2022_06_16_161908) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "slug"
-<<<<<<< HEAD
     t.bigint "place_id"
-=======
->>>>>>> main
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["place_id"], name: "index_users_on_place_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
   end
 
+  create_table "wishlists", force: :cascade do |t|
+    t.integer "limit"
+    t.bigint "user_id"
+    t.bigint "dog_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dog_id"], name: "index_wishlists_on_dog_id"
+    t.index ["user_id"], name: "index_wishlists_on_user_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "places", "users"
   add_foreign_key "users", "places"
+  add_foreign_key "wishlists", "dogs"
+  add_foreign_key "wishlists", "users"
 end
