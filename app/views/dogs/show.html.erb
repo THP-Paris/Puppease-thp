@@ -27,8 +27,8 @@
       <div class="row">
         
           <div class="col-md-7 mb-md-0 mb-3">
-            <div class="card py-2 px-sm-4 px-3 shadow-sm">
-              <div class="card-body mx-n2">
+            <div class="card py-5 px-sm-6 px-3 shadow-sm">
+              <div class="card-body mx-n3">
 
                 <!-- info-->
                 <div class="d-flex align-items-start mb-3 pb-3 border-bottom"><%= image_tag("thumbnail_puppease.png", width:"60") %>
@@ -73,7 +73,7 @@
                 </div>
                 
                 <!-- City -->
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center pt-3">
                 <% if @dog.owner.place%><h4 class="h5 mb-0 me-3"><%=@dog.owner.place.city%></h4><% end%>
                   
                 </div>
@@ -124,15 +124,18 @@
          
           <% end %>
       </section>
+      </section>
 
+      <section class="container pt-2 mt-2">
       <!-- Map -->
-      
+
+     
       <% if @dog.owner.place%>
       
       <div class="d-sm-flex align-items-center justify-content-between mb-4 pb-sm-2 border-bottom pb-3 mb-4">
       <h1 class="h2 me-3 mb-sm-0">Localisation</h1></div>
      
-      <div class="gallery rounded-4"">
+     
       <script>
       document.addEventListener("DOMContentLoaded", function(){
           initMap(<%=@dog.owner.place.latitude%>, <%=@dog.owner.place.longitude%>)
@@ -143,9 +146,10 @@
 
       <div>
         <p>
-          <div class="position-relative" id="map"></div>
+          <div class="mx-auto rounded-3" id="map" style="width: 100%;"></div>
       </p>
       </div>
 <% end%>
+
 </section>
 
