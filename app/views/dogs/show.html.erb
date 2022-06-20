@@ -78,20 +78,23 @@
           </div>
 
           
+          
           <!-- Gallery-->
           <%if @dog.pictures.attached?%>
          
           <div class="col">
 
+
+
             <div class="row g-2 g-md-3 gallery" style="min-width: 90%;">
 
-              <div class="col-9"><a class="gallery-item rounded rounded-md-3"><%if @dog.pictures[0]%><%=image_tag(@dog.pictures[0])%> <%end%> </a></div>
+              <div class="col-9"><a href= <%= polymorphic_url(@dog.pictures.first)%> class="gallery-item rounded rounded-md-3"><%if @dog.pictures[0]%><%=image_tag(@dog.pictures[0])%> <%end%> </a></div>
           
-              <div class="col-3"><a class="gallery-item rounded rounded-md-3 mb-2 mb-md-3"><%if @dog.pictures[1]%><%=image_tag(@dog.pictures[1])%> <%end%></a>
+              <div class="col-3"><a href= <%= polymorphic_url(@dog.pictures[1])%> class="gallery-item rounded rounded-md-3 mb-2 mb-md-3"><%if @dog.pictures[1]%><%=image_tag(@dog.pictures[1])%> <%end%></a>
 
-            <a class="gallery-item rounded rounded-md-3 mb-2 mb-md-3"><%if @dog.pictures[2]%><%=image_tag(@dog.pictures[2])%> <%end%></a>
+            <a href= <%= polymorphic_url(@dog.pictures[2])%> class="gallery-item rounded rounded-md-3 mb-2 mb-md-3"><%if @dog.pictures[2]%><%=image_tag(@dog.pictures[2])%> <%end%></a>
          
-              <a class="gallery-item rounded rounded-md-3"><%if @dog.pictures[3]%><%=image_tag(@dog.pictures[3])%> <%end%></a>
+              <a href= <%= polymorphic_url(@dog.pictures[3])%> class="gallery-item rounded rounded-md-3"><%if @dog.pictures[3]%><%=image_tag(@dog.pictures[3])%> <%end%></a>
               
               
               </div>
@@ -100,15 +103,15 @@
               
             
               <div class="col-12">
-                <div class="row g-2 g-md-3">
+                <div class="row g-2 g-md-3 gallery">
          
-                  <div class="col"><a class="gallery-item rounded-1 rounded-md-2"><%if @dog.pictures[4]%><%=image_tag(@dog.pictures[4])%> <%end%></a></div>
+                  <div class="col"><a href= <%= polymorphic_url(@dog.pictures[4])%> class="gallery-item rounded-1 rounded-md-2"><%if @dog.pictures[4]%><%=image_tag(@dog.pictures[4])%> <%end%></a></div>
           
-                  <div class="col"><a class="gallery-item rounded-1 rounded-md-2"><%if @dog.pictures[5]%><%=image_tag(@dog.pictures[5])%> <%end%></a></div>
+                  <div class="col"><%if @dog.pictures[5]%><a href= <%= polymorphic_url(@dog.pictures[5])%> class="gallery-item rounded-1 rounded-md-2"><%=image_tag(@dog.pictures[5])%> <%end%></a></div>
           
-                  <div class="col"><a class="gallery-item rounded-1 rounded-md-2"><%if @dog.pictures[5]%><%=image_tag(@dog.pictures[5])%> <%end%></a></div>
+                  <div class="col"><%if @dog.pictures[6]%> <a href= <%= polymorphic_url(@dog.pictures[6])%> class="gallery-item rounded-1 rounded-md-2"><%=image_tag(@dog.pictures[6])%> <%end%></a></div>
           
-                  <div class="col"><a class="gallery-item rounded-1 rounded-md-2"><%if @dog.pictures[6]%><%=image_tag(@dog.pictures[6])%> <%end%></a></div>
+                  <div class="col"><%if @dog.pictures[7]%><a <a href= <%= polymorphic_url(@dog.pictures[7])%> class="gallery-item rounded-1 rounded-md-2"><%=image_tag(@dog.pictures[7])%> <%end%></a></div>
           
                   </div>
                   </div>
@@ -119,15 +122,13 @@
       </section>
 
        
+      
 
-
-
+     
 
 
       <h1> MAPPPPPP </h1>
 
 
-      <div class="d-flex align-items-center justify-content-between mb-4 pb-2">
-          <h2 class="h3 mb-0">Recently viewed</h2><a class="btn btn-link fw-normal ms-sm-3 p-0" href="city-guide-catalog.html">View all<i class="fi-arrow-long-right ms-2"></i></a>
-        </div>
 </section>
+
