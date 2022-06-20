@@ -1,6 +1,7 @@
 class Dog < ApplicationRecord
-    belongs_to :user
+    belongs_to :owner, class_name: "User", foreign_key: "user_id"
     has_many_attached :pictures
+    
 
     enum gender: {mâle: 1, femelle: 2}
     enum breed: {Pitbull: 0, Labrador: 1, Golden:2, Chihuahua: 3, Bulldog:4, Berger:5, Bichon:6, Boxer:7, Husky:8}

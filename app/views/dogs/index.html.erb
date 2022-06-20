@@ -1,2 +1,38 @@
-<h1>Dogs#index</h1>
-<p>Find me in app/views/dogs/index.html.erb</p>
+
+<div class="container-fluid text-center mb-5 mt-4">
+<div class="row justify-content-around">
+
+
+<% @dogs.each do |dog| %>
+  
+  <div class="col-md-3 mt-4">
+  <div class="d-flex align-items-center flex-column">
+
+
+<div class="card border-primary mb-3" style="max-width: 45rem;">
+<div class="card-header text-center"> <img src="https://source.unsplash.com/250x250/?dog?sig=<%=rand(1..50)%>" class="img-fluid"><% dog.name %> </br> </div>
+
+
+
+ 
+
+
+
+
+  
+  <div class="card-body">
+  <h5 class="card-title"><%= dog.name %></h5>
+    <P class="card-text">Pelage : <%= dog.color %> </p>
+    <P class="card-text">Race : <%= dog.breed%> </p>
+    <P class="card-text">Genre : <%= dog.gender%> </p>
+    <P class="card-text">Date de naissance : le <%= (dog.birth_date).strftime("%d/%m/%Y")%></p>
+
+    <button type="button" class="btn btn-outline-primary"><%= link_to "En savoir plus", dog_path(dog)%></button>
+   
+    </div>
+    </div> 
+  </div>
+</div>
+<% end %>
+</div>
+</div>
