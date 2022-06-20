@@ -11,8 +11,14 @@
   <%= image_tag @user.avatar, alt: 'avatar', width:"20%"%>
 <%else%>
   <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
-  <%= render 'places/form', place: @place%>
 <%end%>
+
+  <% if @place%>
+    <%= @place.city%>
+    <%= link_to "Modifier l'adresse", edit_place_path%>
+  <% else %>
+    <%= link_to 'Nouvelle adresse', new_place_path%>
+  <%end%>
 
 <h4>Changer d'avatar ?</h4>
 <%= form_tag user_avatars_path(@user), multipart: true do %>
