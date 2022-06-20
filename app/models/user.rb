@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :dogs
+  belongs_to :place
 
   has_one_attached :avatar
   # Include default devise modules. Others available are:

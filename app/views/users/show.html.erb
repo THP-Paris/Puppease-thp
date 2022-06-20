@@ -11,6 +11,7 @@
   <%= image_tag @user.avatar, alt: 'avatar', width:"20%"%>
 <%else%>
   <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
+  <%= render 'places/form', place: @place%>
 <%end%>
 
 <h4>Changer d'avatar ?</h4>
@@ -22,7 +23,6 @@
 </div>
   </div>
   </br>
-
 
 <h3> Voici la liste des chiens inscrits de <%= @user.username %> </h3>
 
