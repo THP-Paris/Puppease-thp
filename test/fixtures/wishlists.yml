@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  limit: 1
+  user: one
+  dog: one
+
+two:
+  limit: 1
+  user: two
+  dog: two
