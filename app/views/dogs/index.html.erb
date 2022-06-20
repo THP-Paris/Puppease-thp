@@ -3,18 +3,25 @@
 <div class="row justify-content-around">
 
 
-<% @dogs.each do |dog| %>
+<% @dogs.with_attached_pictures.each do |dog| %>
   
   <div class="col-md-3 mt-4">
   <div class="d-flex align-items-center flex-column">
 
 
 <div class="card border-primary mb-3" style="max-width: 45rem;">
-<div class="card-header text-center"> <img src="https://source.unsplash.com/250x250/?dog?sig=<%=rand(1..50)%>" class="img-fluid"><% dog.name %> </br> </div>
+
+<%if dog.pictures.attached?%>
+
+<div class="card-header text-center"> <%=image_tag(dog.pictures.first)%> 
+
+<% end %>
 
 
 
- 
+
+<% dog.name %> </br> </div>
+
 
 
 
