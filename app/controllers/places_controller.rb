@@ -8,6 +8,7 @@ class PlacesController < ApplicationController
 
   # GET /places/1 or /places/1.json
   def show
+    @place = Place.find_by(user_id: current_user.id)
   end
 
   # GET /places/new
@@ -37,6 +38,7 @@ class PlacesController < ApplicationController
 
   # PATCH/PUT /places/1 or /places/1.json
   def update
+    @place = Place.find_by(user_id: current_user.id)
     respond_to do |format|
       if @place.update(place_params)
         format.html { redirect_to place_url(@place), notice: "Place was successfully updated." }
@@ -69,4 +71,5 @@ class PlacesController < ApplicationController
     def place_params
       params.require(:place).permit(:street, :city, :zip, :state , :latitude, :longitude)
     end
+
 end
