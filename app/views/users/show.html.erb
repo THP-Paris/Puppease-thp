@@ -32,7 +32,7 @@
           <div class="me-n3" data-bs-toggle="tooltip" title="Edit"><a class="nav-link py-0" href="#name-collapse" data-bs-toggle="collapse"><i class="fi-edit"></i></a></div>
         </div>
         <div class="collapse" id="name-collapse" data-bs-parent="#personal-info">
-          <input class="form-control mt-3" type="text" data-bs-binded-element="#name-value" data-bs-unset-value="Not specified" value="Annette Black">
+          <input class="form-control mt-3" type="text" data-bs-binded-element="#name-value" data-bs-unset-value="Not specified" value="<%= @user.username %>">
         </div>
       </div>
 
@@ -47,7 +47,7 @@
           <div class="me-n3" data-bs-toggle="tooltip" title="Edit"><a class="nav-link py-0" href="#email-collapse" data-bs-toggle="collapse"><i class="fi-edit"></i></a></div>
         </div>
         <div class="collapse" id="email-collapse" data-bs-parent="#personal-info">
-          <input class="form-control mt-3" type="email" data-bs-binded-element="#email-value" data-bs-unset-value="Not specified" value="annette_black@email.com">
+          <input class="form-control mt-3" type="email" data-bs-binded-element="#email-value" data-bs-unset-value="Not specified" value="<%= @user.email %>">
         </div>
       </div>
 
@@ -61,7 +61,7 @@
           <div class="me-n3" data-bs-toggle="tooltip" title="Edit"><a class="nav-link py-0" href="#phone-collapse" data-bs-toggle="collapse"><i class="fi-edit"></i></a></div>
         </div>
         <div class="collapse" id="phone-collapse" data-bs-parent="#personal-info">
-          <input class="form-control mt-3" type="text" data-bs-binded-element="#phone-value" data-bs-unset-value="Not specified" value="(302) 555-0107">
+          <input class="form-control mt-3" type="text" data-bs-binded-element="#phone-value" data-bs-unset-value="Not specified" value="<%= @user.phone %>">
         </div>
       </div>
 
@@ -75,34 +75,17 @@
           <div class="me-n3" data-bs-toggle="tooltip" title="Edit"><a class="nav-link py-0" href="#address-collapse" data-bs-toggle="collapse"><i class="fi-edit"></i></a></div>
         </div>
         <div class="collapse" id="address-collapse" data-bs-parent="#personal-info">
-          <input class="form-control mt-3" type="text" data-bs-binded-element="#address-value" data-bs-unset-value="Not specified" placeholder="Enter address">
+          <input class="form-control mt-3" type="text" data-bs-binded-element="#address-value" data-bs-unset-value="Not specified" placeholder="ville">
         </div>
       </div>
-      <!-- Password-->
-      <div>
-        <div class="d-flex align-items-center justify-content-between">
-          <div class="pe-2">
-            <label class="form-label fw-bold">Password</label>
-            <div><%= @user.current_password%></div>
-          </div>
-          <div class="me-n3" data-bs-toggle="tooltip" title="Edit"><a class="nav-link py-0" href="#company-collapse" data-bs-toggle="collapse"><i class="fi-edit"></i></a></div>
-        </div>
-        <div class="collapse" id="company-collapse" data-bs-parent="#personal-info">
-          <div class="password-toggle mt-3">
-            <input class="form-control" type="password" id="pass-visibility" value="hidden@password">
-            <label class="password-toggle-btn" aria-label="Show/hide password">
-              <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="d-flex align-items-center justify-content-between mt-4">
-      <button class="btn btn-primary rounded-pill px-3 px-sm-4" type="button">Save changes</button>
-      <button class="btn btn-link btn-sm px-0" type="button"><i class="fi-trash me-2"></i>Delete account</button>
-    </div>
- 
 
+    </div>
+    
+ 
+    <div class="d-flex align-items-center justify-content-between mt-4">
+    <%= link_to "Modifier mes informations", edit_user_registration_path %>
+    
+  </div>
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4 sm-2 border-bottom mb-4 mt-4">
 <h3> Liste des chiens inscrits de <%= @user.username %> </h3>
@@ -113,7 +96,7 @@
 <% @user.dogs.each do |dog|%></br>
 
   <div class="card card-body p-4 p-md-5 shadow-sm d-flex flex-row">
-  <div class="position-relative flex-shrink-0 p-2"><img class="rounded rounded-circle" <%=image_tag(dog.pictures.first, width:"100;") %>
+  <div class="position-relative flex-shrink-0 p-2"><img class="rounded rounded-3" <%=image_tag(dog.pictures.first, width:"100;") %>
         
   </div>
   <div class= "p-2">
