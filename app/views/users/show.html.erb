@@ -11,7 +11,9 @@
   <!-- Account header-->
   <div class="d-flex align-items-center justify-content-between pb-4 mb-2">
     <div class="d-flex align-items-center">
-      <div class="position-relative flex-shrink-0"><img class="rounded-circle" <%= image_tag @user.avatar, alt: 'avatar', width:"100"%>
+    
+    <%if @user.avatar.attached?%><div class="position-relative flex-shrink-0"><img class="rounded-circle" <%= image_tag @user.avatar, alt: 'avatar', width:"100"%> 
+      <%end%>
         
       </div>
       <div class="ps-3 ps-sm-4">
@@ -21,7 +23,6 @@
   </div>
   <!-- Page content-->
   <div class="card card-body p-4 p-md-5 shadow-sm">
-    
       <!-- Name-->
       <div class="border-bottom pb-3 mb-3">
         <div class="d-flex align-items-center justify-content-between">
@@ -65,6 +66,7 @@
         </div>
       </div>
 
+      <% if @place%>
       <!-- Address-->
       <div class="border-bottom pb-3 mb-3">
         <div class="d-flex align-items-center justify-content-between">
@@ -76,14 +78,19 @@
         </div>
         <div class="collapse" id="address-collapse" data-bs-parent="#personal-info">
           <input class="form-control mt-3" type="text" data-bs-binded-element="#address-value" data-bs-unset-value="Not specified" placeholder="ville">
+          
         </div>
+        
       </div>
-
+     
+      <% end %>
     </div>
-    
+
+
  
     <div class="d-flex align-items-center justify-content-between mt-4">
     <%= link_to "Modifier mes informations", edit_user_registration_path %>
+    
     
   </div>
 
@@ -91,7 +98,7 @@
 <h3> Liste des chiens inscrits de <%= @user.username %> </h3>
 </div>
 
-
+<% if @user.dogs %>
 
 <% @user.dogs.each do |dog|%></br>
 
@@ -110,10 +117,17 @@ Né(e) le <%=(dog.birth_date).strftime("%d/%m/%Y") %></br>
 <%= link_to "Voir", dog_path(dog.id) %>
 </div>
 
-
   </div>
  
   <% end %>
+
+  <%else %>
+  
+ Pas encore de chien inscrit </br>
+
+  <%= link_to 'Inscrire mon chien', new_dog_path%>
+
+  <% end%>
 
   </div>
 </div>
