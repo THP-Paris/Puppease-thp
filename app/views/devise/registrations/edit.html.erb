@@ -1,9 +1,33 @@
-<div class="col-md-6 px-4 pt-2 pb-4 px-sm-5 pb-sm-5 pt-md-5">
 
-<h2>Modifier mes informations de profil</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<!-- Page container-->
+<div class="container pt-2 mt-2">
+  <div class="row">
+    <!-- Page content-->
+    <div class="col-lg-8">
+      <!-- Breadcrumb-->
+      <nav class="mb-3 pt-2 pt-lg-3" aria-label="Breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a <%= link_to "Accueil", root_path %></a></li>
+          <li class="breadcrumb-item active" aria-current="page">Informations</li>
+        </ol>
+      </nav>
+      <!-- Title-->
+      <div class="d-sm-flex align-items-center justify-content-between mb-4 pb-sm-2 border-bottom pb-3 mb-4">
+    
+        <h1 class="h2 me-3 mb-sm-0">Complétez vos informations pour inscrire votre chien</h1> </div>
+
+<!-- info-->
+            <section class="card card-body border-0 shadow-sm p-4 mb-4" id="basic-info">
+              <h2 class="h4 mb-4"><i class="fi-info-circle text-primary fs-5 mt-n1 me-2"></i>Informations</h2>
+
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+                <%= render "devise/shared/error_messages", resource: resource %>
+
+              <div class="mb-4">
+              <%= f.label :nom %><span class="text-danger">*</span><br/>
+                                  <input class="form-control" placeholder="Votre nom et prénom" required="" <%= f.text_field :username, autofocus: true%>
+                                </div>
 
 
 
@@ -16,35 +40,30 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="mb-4">
-  <%= f.label :nom %><br/>
-                      <input class="form-control" id="signin-email" placeholder="Votre nom" required="" <%= f.text_field :username, autofocus: true%>
-                    </div>
 
                     <div class="mb-4">
-                    <%= f.label :numéro_de_téléphone %><br/>
+                    <%= f.label :numéro_de_téléphone %><span class="text-danger">*</span><br/>
                                         <input class="form-control" id="signin-email" placeholder="Votre numéro de téléphone" required="" <%= f.text_field :phone, autofocus: true%>
                                       </div>
 
-  <div class="mb-4">
-  <%= f.label :Mot_de_passe %> <i>(laissez blanc si ne vous voulez pas le changer)</i><br />
-                      <input class="form-control"  <%= f.password_field :password, autocomplete: "new-password" %>
-                      <% if @minimum_password_length %>
-                      
-                      <em><%= @minimum_password_length %> caractères minimum</em>
-                    <% end %>
-                    </div>
-                    
-
-                    <div class="mb-4">
-                    <%= f.label :confirmation_de_mot_de_passe %><br />
-                                        <input class="form-control" <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-                                      </div>
-
                                       <div class="mb-4">
-                                      <%= f.label :Mot_de_passe_actuel %> <i>(nous avons besoin du mot de passe actuel pour confirmer le changement)</i><br />
+                                      <%= f.label :Mot_de_passe_actuel %> <i>(nous avons besoin du mot de passe actuel pour confirmer les changements)</i><br />
                                                           <input class="form-control" <%= f.password_field :current_password, autocomplete: "current-password" %>
                                                         </div>
+
+                                                        <%= f.hidden_field :place_id, value: Place.last::id %>
+
+<!-- File input -->
+<div class="mb-3">
+  <label for="file-input" class="form-label">Photo de profil </label>
+  <input class="form-control" type="file" id="file-input"<%= f.file_field :avatar,  multipart: true %>
+</div>
+                                                    
+
+                                                        <div class="form-check mb-4">
+                                                        <input class="form-check-input" id="form-check-1" type="checkbox">
+                                                        <label class="form-check-label" for="form-check-1">Je m'engage à ne pas utiliser ce site à des fins lucratives </label>
+                                                      </div>
 
                                                         <div class="actions">
                                                         <button class="btn btn-primary btn-lg rounded-pill w-100" type="submit"><%= "Mettre à jour"%></button>
@@ -55,9 +74,13 @@
 
 
 
-<p>Supprimer mon compte <button class="btn btn-primary btn-lg rounded-pill p-2" <%=link_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Êtes-vous sûr?" }, method: :delete %></button></p>
+<%=link_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Êtes-vous sûr?" }, method: :delete %></button></p>
 
+</section>
+<div class="mb-4">
 <%= link_to "Back", :back %>
 </div>
-</div>
 
+</div>
+</div>
+</div>
