@@ -46,6 +46,9 @@
                                                           <input class="form-control" <%= f.password_field :current_password, autocomplete: "current-password" %>
                                                         </div>
 
+                                                        <%= f.hidden_field :place_id, value: Place.last::id %>
+
+
                                                         <div class="actions">
                                                         <button class="btn btn-primary btn-lg rounded-pill w-100" type="submit"><%= "Mettre à jour"%></button>
                                                         </div>
