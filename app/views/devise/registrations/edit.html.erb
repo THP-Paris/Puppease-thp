@@ -46,6 +46,11 @@
                                         <input class="form-control" id="signin-email" placeholder="Votre numéro de téléphone" required="" <%= f.text_field :phone, autofocus: true%>
                                       </div>
 
+                                      <!-- File input -->
+<div class="mb-3">
+  <label for="file-input" class="form-label">Photo de profil </label>
+  <input class="form-control" type="file" id="file-input"<%= f.file_field :avatar,  multipart: true %>
+</div>
                                       <div class="mb-4">
                                       <%= f.label :Mot_de_passe_actuel %> <i>(nous avons besoin du mot de passe actuel pour confirmer les changements)</i><br />
                                                           <input class="form-control" <%= f.password_field :current_password, autocomplete: "current-password" %>
@@ -53,11 +58,7 @@
 
                                                         <%= f.hidden_field :place_id, value: Place.last::id %>
 
-<!-- File input -->
-<div class="mb-3">
-  <label for="file-input" class="form-label">Photo de profil </label>
-  <input class="form-control" type="file" id="file-input"<%= f.file_field :avatar,  multipart: true %>
-</div>
+
                                                     
 
                                                         <div class="form-check mb-4">
