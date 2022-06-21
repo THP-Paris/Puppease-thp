@@ -12,13 +12,14 @@
   <div class="d-flex align-items-center justify-content-between pb-4 mb-2">
     <div class="d-flex align-items-center">
     
-    <%if @user.avatar.attached?%><div class="position-relative flex-shrink-0"><img class="rounded-circle" <%= image_tag @user.avatar, alt: 'avatar', width:"100"%> 
+   <div class="position-relative flex-shrink-0"> <%if @user.avatar.attached?%><img class="rounded-circle" <%= image_tag @user.avatar, alt: 'avatar', width:"100"%> 
       <%end%>
-        
-      </div>
+        </div>
+       
       <div class="ps-3 ps-sm-4">
         <h3 class="h4 mb-2"><%= @user.username %></h3>
       </div>
+      
     </div><a class="nav-link p-0 d-none d-md-block"<i class="fi-logout mt-n1 me-2"<%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %></i></a>
   </div>
   <!-- Page content-->
@@ -98,9 +99,11 @@
 <h3> Liste des chiens inscrits de <%= @user.username %> </h3>
 </div>
 
-<% if @user.dogs %>
 
-<% @user.dogs.each do |dog|%></br>
+
+
+
+<% @user.dogs.each do |dog|%> </br>
 
   <div class="card card-body p-4 p-md-5 shadow-sm d-flex flex-row">
   <div class="position-relative flex-shrink-0 p-2"><img class="rounded rounded-3" <%=image_tag(dog.pictures.first, width:"100;") %>
@@ -121,7 +124,10 @@ Né(e) le <%=(dog.birth_date).strftime("%d/%m/%Y") %></br>
  
   <% end %>
 
-  <%else %>
+ 
+  <% if @user.dogs != 0 %>
+
+  <% else %>
   
  Pas encore de chien inscrit </br>
 
