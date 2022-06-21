@@ -6,59 +6,60 @@
 <%= form_for @dog, method: :post do |form| %>
 
 <div class="mb-4">
-<%= form.label :nom %><br/>
+<label for="file-input" class="form-label">Nom</label>
 <input class="form-control" type="name" placeholder="Entrez son nom" required="" <%= form.text_field :name, autofocus: true %>
 </div>
 
 <div class="mb-4">
-
-<%= form.label :male_ou_femelle %><br/>
+<label for="file-input" class="form-label">Genre</label>
 <select class="form-control" <%= form.select :gender, Dog::genders.keys %>
 </div>
 
 <div class="mb-4">
-<%= form.label :date_de_naissance %><br/>
-<input class="form-control" placeholder="date de naissance" required="" <%= form.date_field :birth_date %>
+<label for="file-input" class="form-label">Date de naissance</label>
+<input class="form-control date-picker rounded pe-5" placeholder="date de naissance" required="" <%= form.date_field :birth_date %>
 </div>
 
 <div class="mb-4">
-<%= form.label :description %><br/>
-<input class="form-control" type="text" placeholder="Sa description" required="" <%= form.text_area :description, autofocus: true %>
+<label for="file-input" class="form-label">Description</label>
+<textarea  class="form-control" type="text" placeholder="Sa description" required="" rows="5" <%= form.text_area :description, autofocus: true %>
 </div>
 
 <div class="mb-4">
-<%= form.label :race %><br/>
+<label for="file-input" class="form-label">Race</label>
 <select class="form-control"<%= form.select :breed, Dog::breeds.keys %>
 </div>
 
 <div class="mb-4">
-<%= form.label :Pelage%><br/>
+<label for="file-input" class="form-label">Pelage</label>
 <select class="form-control"<%= form.select :color, Dog.colors.keys %>
 </div>
 
 <div class="mb-4">
-<%= form.label :LOF %><br/>
+<label for="file-input" class="form-label">Inscrit au LOF</label>
 <select class="form-control"<%= form.select :lof, Dog::lofs.keys %>
 </div>
 
 <div class="mb-4">
-<%= form.label :vaccine %><br/>
+<label for="file-input" class="form-label">Vacciné </label>
 <select class="form-control"<%= form.select :vaccine, Dog::vaccines.keys %>
 </div>
 
 
 <div class="mb-4">
-<%= form.label :récompensé%><br/>
+<label for="file-input" class="form-label">Récompenses</label>
 <select class="form-control"<%= form.select :reward, Dog::rewards.keys %>
 </div>
 
+<!-- File input -->
+<div class="mb-3">
+  <label for="file-input" class="form-label">Photos</label>
+  <input class="form-control" type="file" id="file-input"<%= form.file_field :pictures, multiple: true %>
+</div>
 
-
-<%= form.file_field :pictures, multiple: true %><br>
-</br>
 
 <div class="actions">
-<button class="btn btn-primary btn-lg rounded-pill w-100" type="submit"><%= "Inscrire mon chien" %></button>
+<button class="btn btn-primary btn-lg rounded-pill w-100 mt-3" type="submit"><%= "Inscrire mon chien" %></button>
 </div>
 
 <% end %>
