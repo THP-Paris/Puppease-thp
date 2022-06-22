@@ -123,6 +123,18 @@
               </div>
          
           <% end %>
+
+            <% if user_signed_in? %>
+              <%= form_for @wishlist do |f| %>
+                               
+               <%= f.hidden_field :user_id, value: current_user.id %>
+               <%= f.hidden_field :dog_id, value: @dog.id %> 
+                                   
+                <button type="submit" class="btn btn-success">Ajouter a ta liste</button>
+              <% end %>
+            <% end %>
+
+
       </section>
       </section>
 
