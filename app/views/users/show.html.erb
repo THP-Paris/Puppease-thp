@@ -106,9 +106,10 @@
 <% @user.dogs.each do |dog|%> </br>
 
   <div class="card card-body p-4 p-md-5 shadow-sm d-flex flex-row">
-  <div class="position-relative flex-shrink-0 p-2"><img class="rounded rounded-3" <%=image_tag(dog.pictures.first, width:"100;") %>
-
+  <div class="position-relative flex-shrink-0 p-2"><% if dog.pictures.attached? %> <img class="rounded rounded-3" <%=image_tag(dog.pictures.first, width:"100;") %> <% end %>
+        
   </div>
+  
   <div class= "p-2">
 <b> <%= dog.name %> </br> </b>
 
@@ -124,14 +125,9 @@ Né(e) le <%=(dog.birth_date).strftime("%d/%m/%Y") %></br>
  
   <% end %>
 
- 
-
-
-
-  
- Pas encore de chien inscrit ? </br>
-
+  <div class= "p-4">
   <%= link_to 'Inscrire mon chien', new_dog_path%>
+  </div>
 
 
   </div>
