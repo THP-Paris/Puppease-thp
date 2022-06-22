@@ -68,7 +68,16 @@
                     <div class="col mb-sm-0 mb-3">
                       <h4 class="h5 mb-0"><span class="fs-base fw-normal text-body"><%= @dog.description %> </span></h4>
                     </div>
-                    <div class="col"><a class="btn btn-primary btn-lg rounded-pill w-sm-auto w-100" href="#">Book now<i class="fi-chevron-right fs-sm ms-2"></i></a></div>
+                    <div class="col">
+                    <% if user_signed_in? %>
+                    <%= form_for(@wishlist, remote: true) do |f| %>
+                                     
+                     <%= f.hidden_field :user_id, value: current_user.id %>
+                     <%= f.hidden_field :dog_id, value: @dog.id %> 
+                                         
+                      <button type="submit" <a class="btn btn-primary btn-lg rounded-pill w-sm-auto w-100">Ajouter a ta liste</button>
+                    <% end %>
+                  <% end %></a></div>
                   </div>
                 </div>
                 
@@ -124,15 +133,6 @@
          
           <% end %>
 
-            <% if user_signed_in? %>
-              <%= form_for @wishlist do |f| %>
-                               
-               <%= f.hidden_field :user_id, value: current_user.id %>
-               <%= f.hidden_field :dog_id, value: @dog.id %> 
-                                   
-                <button type="submit" class="btn btn-success">Ajouter a ta liste</button>
-              <% end %>
-            <% end %>
 
 
       </section>
