@@ -63,8 +63,8 @@ class PlacesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_place
-      @user = User.friendly.find(params[:id])
-      @place = Place.find_by(user_id: @user.id)
+      # @user = User.friendly.find(params[:id])
+      # @place = Place.find_by(user_id: @user.id)
     end
 
     # Only allow a list of trusted parameters through.
