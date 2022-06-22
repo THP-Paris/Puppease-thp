@@ -24,11 +24,15 @@ class WishlistsController < ApplicationController
 
     respond_to do |format|
       if @wishlist.save
-        format.html { redirect_to wishlist_url(@wishlist), notice: "Wishlist was successfully created." }
-        format.json { render :show, status: :created, location: @wishlist }
+        format.html { redirect_to wishlist_url(@wishlist), notice: "Chien ajouté à la wishlist" }
+        format.js {}
+     
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @wishlist.errors, status: :unprocessable_entity }
+        puts '$'*50
+        puts @wishlist.errors.messages
+        puts '$'*50
       end
     end
   end
@@ -42,6 +46,7 @@ class WishlistsController < ApplicationController
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @wishlist.errors, status: :unprocessable_entity }
+
       end
     end
   end
@@ -64,6 +69,6 @@ class WishlistsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def wishlist_params
-      params.require(:wishlist).permit(:limit, :user_id, :dog_id)
+      params.require(:wishlist).permit(:limit, :user_id, :dog_id, fan: current_user)
     end
 end
