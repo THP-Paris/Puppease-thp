@@ -125,15 +125,14 @@ Né(e) le <%=(dog.birth_date).strftime("%d/%m/%Y") %></br>
   <% end %>
 
  
-  <% if @user.dogs != 0 %>
 
-  <% else %>
+
+
   
- Pas encore de chien inscrit </br>
+ Pas encore de chien inscrit ? </br>
 
   <%= link_to 'Inscrire mon chien', new_dog_path%>
 
-  <% end%>
 
   </div>
 </div>
