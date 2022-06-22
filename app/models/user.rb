@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_many :dogs
+  has_one :wishlist
+  has_many :liked_dogs, through: :wishlist, class_name: "Dog", foreign_key: "dog_id"
   belongs_to :place, optional: true
 
   has_one_attached :avatar
