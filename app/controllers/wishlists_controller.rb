@@ -12,7 +12,6 @@ class WishlistsController < ApplicationController
 
   # GET /wishlists/new
   def new
-    @wishlist = Wishlist.new
   end
 
   # GET /wishlists/1/edit

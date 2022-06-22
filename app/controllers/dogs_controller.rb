@@ -8,8 +8,7 @@ class DogsController < ApplicationController
     @dog = Dog.friendly.find(params[:id])
     @dog = Dog.with_attached_pictures.friendly.find(params[:id])
   
-
-    
+    @wishlist = Wishlist.new
   end
 
   def new

@@ -33,3 +33,14 @@ Description : <%= @dog.description %> </br>
 Vacciné : <%= @dog.vaccine %> </br>
 Inscrit au LOF <%= @dog.lof %> </br>
 Recompenses :<%= @dog.reward %> </br>
+
+<% if user_signed_in? %>
+  <%= form_for @wishlist do |f| %>
+                               
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :dog_id, value: @dog.id %> 
+                                   
+    <button type="submit" class="btn btn-success">Ajouter a ta liste</button>
+  <% end %>
+<% end %>
+
