@@ -4,13 +4,22 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Salut et bienvenue chez nous !</h1>
-    <p>
-      Tu t'es inscrit sur monsite.fr en utilisant l'e-mail suivant : <%= @user.email %>.
-    </p>
-    <p>
-      Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
-    </p>
-    <p> À très vite sur puppease.com !
+  
+    <!-- Horizontal card layout -->
+<div class="card card-horizontal">
+<div class="card-img-top" style="background-image: url(https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);"></div>
+  <div class="card-body">
+    <h5 class="card-title">  <h1>Salut et bienvenue chez nous !</h1></h5>
+    <p class="card-text fs-sm"><p>
+    Tu t'es inscrit sur Puppease en utilisant l'e-mail suivant : <%= @user.email %>.
+  </p>
+  <p>
+    Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
+  </p>
+  <p> À très vite sur puppease.com !</p>
+    <a href=<%= @url %> class="btn btn-sm btn-primary">Je veux voir</a>
+  </div>
+</div>
+    
   </body>
 </html>
