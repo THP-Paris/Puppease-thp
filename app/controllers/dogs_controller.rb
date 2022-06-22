@@ -2,8 +2,8 @@ class DogsController < ApplicationController
   before_action :authenticate_user!, only:[:create]
 
   def index
-    @dogs = Dog.all.with_attached_pictures
-
+    @q = Dog.ransack(params[:q])
+    @dogs = @q.result
   end
 
   def show
@@ -43,6 +43,10 @@ class DogsController < ApplicationController
 
   def dog_params
     params.require(:dog).permit(:name, :birth_date, :gender, :description, :vaccine, :lof, :reward, :breed, :color, pictures: [])
+  end
+
+  def filtering_params(params)
+    params.slice(:breed, :color)
   end
 
 end
