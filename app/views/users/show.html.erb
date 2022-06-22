@@ -1,52 +1,140 @@
-<div class="container mt-5 mb-md-4 py-5">
+<!-- Page content-->
+<!-- Page container-->
+<div class="container mb-md-4 py-5">
+  <!-- Breadcrumbs-->
+  <nav class="mb-4 pt-2 pt-lg-3" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a <%= link_to "Accueil", root_path%></a></li>
+      <li class="breadcrumb-item active" aria-current="page">Informations de profil</li>
+    </ol>
+  </nav>
+  <!-- Account header-->
+  <div class="d-flex align-items-center justify-content-between pb-4 mb-2">
+    <div class="d-flex align-items-center">
+    
+   <div class="position-relative flex-shrink-0"> <%if @user.avatar.attached?%><img class="rounded-circle" <%= image_tag @user.avatar, alt: 'avatar', width:"100"%> 
+      <%end%>
+        </div>
+       
+      <div class="ps-3 ps-sm-4">
+        <h3 class="h4 mb-2"><%= @user.username %></h3>
+      </div>
+      
+    </div><a class="nav-link p-0 d-none d-md-block"<i class="fi-logout mt-n1 me-2"<%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %></i></a>
+  </div>
+  <!-- Page content-->
+  <div class="card card-body p-4 p-md-5 shadow-sm">
+      <!-- Name-->
+      <div class="border-bottom pb-3 mb-3">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="pe-2">
+            <label class="form-label fw-bold">Nom</label>
+            <div id="name-value"><%= @user.username %></div>
+          </div>
+          <div class="me-n3" data-bs-toggle="tooltip" title="Edit"><a class="nav-link py-0" href="#name-collapse" data-bs-toggle="collapse"><i class="fi-edit"></i></a></div>
+        </div>
+        <div class="collapse" id="name-collapse" data-bs-parent="#personal-info">
+          <input class="form-control mt-3" type="text" data-bs-binded-element="#name-value" data-bs-unset-value="Not specified" value="<%= @user.username %>">
+        </div>
+      </div>
 
-<h1>Page Profil</h1>
+      
+      <!-- Email-->
+      <div class="border-bottom pb-3 mb-3">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="pe-2">
+            <label class="form-label fw-bold">Email</label>
+            <div id="email-value"><%= @user.email %></div>
+          </div>
+          <div class="me-n3" data-bs-toggle="tooltip" title="Edit"><a class="nav-link py-0" href="#email-collapse" data-bs-toggle="collapse"><i class="fi-edit"></i></a></div>
+        </div>
+        <div class="collapse" id="email-collapse" data-bs-parent="#personal-info">
+          <input class="form-control mt-3" type="email" data-bs-binded-element="#email-value" data-bs-unset-value="Not specified" value="<%= @user.email %>">
+        </div>
+      </div>
 
-<div class="card">
-<div class="card-body">
+      <!-- Phone number-->
+      <div class="border-bottom pb-3 mb-3">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="pe-2">
+            <label class="form-label fw-bold">Numéro de téléphone</label>
+            <div id="phone-value"><%= @user.phone %></div>
+          </div>
+          <div class="me-n3" data-bs-toggle="tooltip" title="Edit"><a class="nav-link py-0" href="#phone-collapse" data-bs-toggle="collapse"><i class="fi-edit"></i></a></div>
+        </div>
+        <div class="collapse" id="phone-collapse" data-bs-parent="#personal-info">
+          <input class="form-control mt-3" type="text" data-bs-binded-element="#phone-value" data-bs-unset-value="Not specified" value="<%= @user.phone %>">
+        </div>
+      </div>
 
-<p>Bienvenue sur la page profil de <%= @user.username %></p>
-<h3>Avatar actuel</h3>
-<%if @user.avatar.attached?%>
-  <%= image_tag @user.avatar, alt: 'avatar', width:"20%"%>
-<%else%>
-  <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
-<%end%>
+      <% if @place%>
+      <!-- Address-->
+      <div class="border-bottom pb-3 mb-3">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="pe-2">
+            <label class="form-label fw-bold">Ville</label>
+            <div id="address-value"><%= @place.city%></div>
+          </div>
+          <div class="me-n3" data-bs-toggle="tooltip" title="Edit"><a class="nav-link py-0" href="#address-collapse" data-bs-toggle="collapse"><i class="fi-edit"></i></a></div>
+        </div>
+        <div class="collapse" id="address-collapse" data-bs-parent="#personal-info">
+          <input class="form-control mt-3" type="text" data-bs-binded-element="#address-value" data-bs-unset-value="Not specified" placeholder="ville">
+          
+        </div>
+        
+      </div>
+     
+      <% end %>
+    </div>
 
-  <% if @place%>
-    <%= @place.city%>
-    <%= link_to "Modifier l'adresse", edit_place_path%>
-  <% else %>
-    <%= link_to 'Nouvelle adresse', new_place_path%>
-  <%end%>
 
-<h4>Changer d'avatar ?</h4>
-<%= form_tag user_avatars_path(@user), multipart: true do %>
-  <%= file_field_tag :avatar %>
-  <%= submit_tag "mettre à jour" %>
-<% end %>
+ 
+    <div class="d-flex align-items-center justify-content-between mt-4">
+    <%= link_to "Modifier mes informations", edit_user_registration_path %>
+    
+    
+  </div>
 
+<div class="d-sm-flex align-items-center justify-content-between mb-4 sm-2 border-bottom mb-4 mt-4">
+<h3> Liste des chiens inscrits de <%= @user.username %> </h3>
 </div>
+
+
+
+
+
+<% @user.dogs.each do |dog|%> </br>
+
+  <div class="card card-body p-4 p-md-5 shadow-sm d-flex flex-row">
+  <div class="position-relative flex-shrink-0 p-2"><img class="rounded rounded-3" <%=image_tag(dog.pictures.first, width:"100;") %>
+
   </div>
-  </br>
-
-<h3> Voici la liste des chiens inscrits de <%= @user.username %> </h3>
-
-
-
-
-<% @user.dogs.each do |dog|%></br>
-  <div class="card">
-  <div class="card-body">
+  <div class= "p-2">
 <b> <%= dog.name %> </br> </b>
-  Sa description : <%= dog.description %></br>
-  Son genre : <%= dog.gender %></br>
-  Sa date de naissance : <%= (dog.birth_date).strftime("%d/%m/%Y") %></br>
+
+
+<%= dog.description %></br>
+ <%= dog.gender %></br>
+Né(e) le <%=(dog.birth_date).strftime("%d/%m/%Y") %></br>
+
+<%= link_to "Voir", dog_path(dog.id) %>
+</div>
 
   </div>
-  </div>
-  
+ 
   <% end %>
 
+ 
 
+
+
+  
+ Pas encore de chien inscrit ? </br>
+
+  <%= link_to 'Inscrire mon chien', new_dog_path%>
+
+
+  </div>
 </div>
+</div>
+

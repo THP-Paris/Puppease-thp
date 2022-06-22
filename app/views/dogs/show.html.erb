@@ -1,46 +1,167 @@
-<h3>Page profil de <%= @dog.name %></h3>
-
-<div class="container">
-  <div class="row">
-
-<%if @dog.pictures.attached?%>
-
-
-<% @dog.pictures.each do |picture| %>
-
-  <div class="col-sm">
-
-  <%= image_tag(picture, :class => "pictures")%>
-
-  </div>
-  <% end %>
-
-<%else%>
-  <p>=== Il n'y a pas encore de photo liée à ce chien ===</p>
+<!-- Page header-->
+      <section class="container pt-2 mt-2">
+      <!-- Breadcrumb-->
+      <nav class="mb-3 pt-md-3" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a <%= link_to "Accueil", root_path %></a></li>
+          <li class="breadcrumb-item active" aria-current="page"><%= @dog.name %></li>
+        </ol>
+      </nav>
+        <div class="d-sm-flex align-items-center justify-content-between mb-4 pb-sm-2 border-bottom pb-3 mb-4">
+          <h1 class="h2 me-3 mb-sm-0"><%= @dog.name %></h1>
+          <div class="text-nowrap">
+            <button class="btn btn-icon btn-light-primary btn-xs shadow-sm rounded-circle" type="button" data-bs-toggle="tooltip" title="Add to Wishlist"><i class="fi-heart"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
  
-<%end%>
+        <div>
 
-</div>
-</div>
-</br>
-<h3>Plus d'infos sur <%= @dog.name %></h3>
 
-Genre : <%= @dog.gender %> </br>
-Race : <%= @dog.breed %> </br>
-Date de naissance : <%= (@dog.birth_date).strftime("%d/%m/%Y") %> </br>
-Pelage : <%= @dog.color %> </br>
-Description : <%= @dog.description %> </br>
-Vacciné : <%= @dog.vaccine %> </br>
-Inscrit au LOF <%= @dog.lof %> </br>
-Recompenses :<%= @dog.reward %> </br>
+        
+<!-- Page content-->
+      <section class="container pb-5 mb-md-3">
+      
 
-<% if user_signed_in? %>
-  <%= form_for @wishlist do |f| %>
+      <div class="row">
+        
+          <div class="col-md-7 mb-md-0 mb-3">
+            <div class="card py-5 px-sm-6 px-3 shadow-sm">
+              <div class="card-body mx-n3">
+
+                <!-- info-->
+                <div class="d-flex align-items-start mb-3 pb-3 border-bottom"><%= image_tag("thumbnail_puppease.png", width:"60") %>
+                  <div class="ps-2 ms-1">
+                    <h3 class="h5 mb-2"> <%= @dog.name %></h3>
+                    <ul class="list-unstyled d-flex flex-wrap fs-sm">
+                      <li class="me-2 mb-1 pe-1"><b> <%= @dog.gender %> </b></li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- dog contacts-->
+                <div class="mb-3 pb-3 border-bottom">
+                  <h4 class="h5 mb-2">Plus d'infos</h4>
+                  <ul class="nav row row-cols-sm-2 row-cols-1 gy-1">
+
+
+                    <li class="col"><a class="nav-link p-0 fw-normal d-flex align-items-start"><i class="fi-map-pin mt-1 me-2 align-middle opacity-70"></i><%= @dog.breed %></a></li>
+
+                    <li class="col"><a class="nav-link d-inline-block p-0 fw-normal d-inline-flex align-items-start"><i class="fi-phone mt-1 me-2 align-middle opacity-70"></i>Pelage : <%= @dog.color %> </a>
+
+                    <li class="col"><a class="nav-link p-0 fw-normal d-flex align-items-start"><i class="fi-globe mt-1 me-2 align-middle opacity-60"></i> Né(e) le <%=(@dog.birth_date).strftime("%d/%m/%Y") %></a></li>
+
+                    <li class="col"><a class="nav-link p-0 fw-normal d-flex align-items-start"><i class="fi-mail mt-1 me-2 align-middle opacity-70"></i>Vacciné : <%= @dog.vaccine %>
+
+                    <li class="col"><a class="nav-link p-0 fw-normal d-flex align-items-start"><i class="fi-map-pin mt-1 me-2 align-middle opacity-70"></i>Inscrit au LOF : <%= @dog.lof %></a></li>
+
+                    <li class="col"><a class="nav-link d-inline-block p-0 fw-normal d-inline-flex align-items-start"><i class="fi-phone mt-1 me-2 align-middle opacity-70"></i>Recompenses : <%= @dog.reward %> </a>
+
+
+                  </ul>
+                </div>
+
+                <!-- Description -->
+                <div class="mb-3 pb-3 border-bottom">
+                  <div class="row row-cols-sm-2 row-cols-1">
+                    <div class="col mb-sm-0 mb-3">
+                      <h4 class="h5 mb-0"><span class="fs-base fw-normal text-body"><%= @dog.description %> </span></h4>
+                    </div>
+                    <div class="col"><a class="btn btn-primary btn-lg rounded-pill w-sm-auto w-100" href="#">Book now<i class="fi-chevron-right fs-sm ms-2"></i></a></div>
+                  </div>
+                </div>
+                
+                <!-- City -->
+                <div class="d-flex align-items-center pt-3">
+                <% if @dog.owner.place%><h4 class="h5 mb-0 me-3"><%=@dog.owner.place.city%></h4><% end%>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+          
+          <!-- Gallery-->
+          <%if @dog.pictures.attached?%>
+         
+          <div class="col">
+
+
+
+            <div class="row g-2 g-md-3 gallery" style="min-width: 90%;">
+
+              <div class="col-9"><a href= <%= polymorphic_url(@dog.pictures.first)%> class="gallery-item rounded rounded-md-3"><%if @dog.pictures[0]%><%=image_tag(@dog.pictures[0])%> <%end%> </a></div>
+          
+              <div class="col-3"><%if @dog.pictures[1]%><a href= <%= polymorphic_url(@dog.pictures[1])%> class="gallery-item rounded rounded-md-3 mb-2 mb-md-3"><%=image_tag(@dog.pictures[1])%> <%end%></a>
+
+              <%if @dog.pictures[2]%><a href= <%= polymorphic_url(@dog.pictures[2])%> class="gallery-item rounded rounded-md-3 mb-2 mb-md-3"><%=image_tag(@dog.pictures[2])%> <%end%></a>
+         
+              <%if @dog.pictures[3]%> <a href= <%= polymorphic_url(@dog.pictures[3])%> class="gallery-item rounded rounded-md-3"><%=image_tag(@dog.pictures[3])%> <%end%></a>
+              
+              
+              </div>
+             
+             
+              
+            
+              <div class="col-12">
+                <div class="row g-2 g-md-3 gallery">
+         
+                  <div class="col"><%if @dog.pictures[4]%><a href= <%= polymorphic_url(@dog.pictures[4])%> class="gallery-item rounded-1 rounded-md-2"><%=image_tag(@dog.pictures[4])%> <%end%></a></div>
+          
+                  <div class="col"><%if @dog.pictures[5]%><a href= <%= polymorphic_url(@dog.pictures[5])%> class="gallery-item rounded-1 rounded-md-2"><%=image_tag(@dog.pictures[5])%> <%end%></a></div>
+          
+                  <div class="col"><%if @dog.pictures[6]%> <a href= <%= polymorphic_url(@dog.pictures[6])%> class="gallery-item rounded-1 rounded-md-2"><%=image_tag(@dog.pictures[6])%> <%end%></a></div>
+          
+                  <div class="col"><%if @dog.pictures[7]%><a <a href= <%= polymorphic_url(@dog.pictures[7])%> class="gallery-item rounded-1 rounded-md-2"><%=image_tag(@dog.pictures[7])%> <%end%></a></div>
+          
+                  </div>
+                  </div>
+                </div>
+              </div>
+         
+          <% end %>
+
+            <% if user_signed_in? %>
+              <%= form_for @wishlist do |f| %>
                                
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.hidden_field :dog_id, value: @dog.id %> 
+               <%= f.hidden_field :user_id, value: current_user.id %>
+               <%= f.hidden_field :dog_id, value: @dog.id %> 
                                    
-    <button type="submit" class="btn btn-success">Ajouter a ta liste</button>
-  <% end %>
-<% end %>
+                <button type="submit" class="btn btn-success">Ajouter a ta liste</button>
+              <% end %>
+            <% end %>
+
+
+      </section>
+      </section>
+
+      <section class="container pt-2 mt-2">
+      <!-- Map -->
+
+     
+      <% if @dog.owner.place%>
+      
+      <div class="d-sm-flex align-items-center justify-content-between mb-4 pb-sm-2 border-bottom pb-3 mb-4">
+      <h1 class="h2 me-3 mb-sm-0">Localisation</h1></div>
+     
+     
+      <script>
+      document.addEventListener("DOMContentLoaded", function(){
+          initMap(<%=@dog.owner.place.latitude%>, <%=@dog.owner.place.longitude%>)
+      });
+      </script>
+
+      <p id="notice"><%= notice %></p>
+
+      <div>
+        <p>
+          <div class="mx-auto rounded-3" id="map" style="width: 100%;"></div>
+      </p>
+      </div>
+<% end%>
+
+</section>
 

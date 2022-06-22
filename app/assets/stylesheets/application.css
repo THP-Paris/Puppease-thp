@@ -13,7 +13,9 @@
  *
  *= require simplebar.min
  *= require tiny-slider
+ *= require lightgallery-bundle.min.css 
  *= require flatpickr.min
  *= require theme.min
  *= require places
+
  */

@@ -1,4 +1,6 @@
 class DogsController < ApplicationController
+  before_action :authenticate_user!, only:[:create]
+
   def index
     @dogs = Dog.all.with_attached_pictures
 
