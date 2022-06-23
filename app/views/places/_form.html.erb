@@ -1,22 +1,27 @@
-<%= form_with(model: place, local: true) do |form| %>
+
+
+<%= form_with(model: place, local: true ) do |form| %>
  
 
-  <div class="field">
-    <%= form.label :street %>
-    <%= form.text_field :street %>
-  </div>
+<div class="mb-3">
+  <label for="text-input" class="form-label">Numéro et rue </label>
+  <input class="form-control" type="text" id="text-input"<%= form.text_field :street %>
+</div>
 
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city %>
-  </div>
+<div class="mb-3">
+<label for="text-input" class="form-label">Code postal </label>
+<input class="form-control" type="text" id="text-input" <%= form.text_field :zip %>
+</div>
 
-  <div class="field">
-    <%= form.label :zip %>
-    <%= form.text_field :zip %>
-  </div>
+<div class="mb-3">
+  <label for="text-input" class="form-label">Ville </label>
+  <input class="form-control" type="text" id="text-input" <%= form.text_field :city %>
+</div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<div class="actions">
+<button class="btn btn-primary btn-lg rounded-pill w-100 mt-3" type="submit"><%= "Enregistrer" %></button>
+</div>
+
 <% end %>
+
+</div>

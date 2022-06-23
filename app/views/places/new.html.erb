@@ -1,5 +1,24 @@
-<h1>New Place</h1>
+<!-- Page content-->
+<!-- Page container-->
+<div class="container mb-md-4 py-5">
+  <!-- Breadcrumbs-->
+  <nav class="mb-4 pt-2 pt-lg-3" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a <%= link_to "Accueil", root_path%></a></li>
+      <li class="breadcrumb-item active" aria-current="page">Nouvelle ville</li>
+    </ol>
+  </nav>
+  <div class="d-sm-flex align-items-center justify-content-between mb-4 pb-sm-2 border-bottom pb-3 mb-4">
+  <h1 class="h2 me-3 mb-sm-0">Renseignez    votre ville</h1>
+</div>
+  <!-- Page content-->
+  <div class="card card-body p-4 p-md-5 shadow-sm">
 
 <%= render 'form', place: @place %>
 
-<%= link_to 'Back', places_path %>
+
+</div>
+
+<div class="col-6" id="map">
+     
+    </div>
