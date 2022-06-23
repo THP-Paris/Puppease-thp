@@ -1,1 +1,12 @@
-Voici le panier de <%= current_user.email %>
+Voici la wishlist <%= current_user.wishlist.id%>  </br>
+
+<% @wishlist.dogs.each do |dog| %>
+
+   <%= dog.name %> </br>
+   <%= dog.breed %></br>
+
+    <% end %>
+
+
+    
+

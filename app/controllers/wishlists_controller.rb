@@ -11,6 +11,7 @@ class WishlistsController < ApplicationController
 
   # GET /wishlists/1 or /wishlists/1.json
   def show
+    @wishlist = Wishlist.find(params[:id])
 
   end
 
@@ -24,21 +25,7 @@ class WishlistsController < ApplicationController
 
   # POST /wishlists or /wishlists.json
   def create
-    @wishlist = Wishlist.new(wishlist_params)
 
-    respond_to do |format|
-      if @wishlist.save
-        format.html { redirect_to wishlist_url(@wishlist), notice: "Chien ajouté à la wishlist" }
-        format.js {}
-     
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @wishlist.errors, status: :unprocessable_entity }
-        puts '$'*50
-        puts @wishlist.errors.messages
-        puts '$'*50
-      end
-    end
   end
 
   # PATCH/PUT /wishlists/1 or /wishlists/1.json
