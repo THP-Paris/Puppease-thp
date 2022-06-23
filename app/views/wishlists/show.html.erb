@@ -75,7 +75,7 @@
   <div class="card-body">
     <h5 class="card-title"> <%= dog.name %> </h5>
     <p class="card-text fs-sm"><%= dog.breed%></p>
-    <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+   <%= button_to "Obtenir coordonnées", checkout_create_path, class: 'btn btn-sm btn-primary', remote: true %>
   </div>
 </div>
 </div>
