@@ -1,3 +1,4 @@
+
 <% provide :head_tags do %>
     <script>
     document.addEventListener("DOMContentLoaded", function(){
@@ -8,10 +9,11 @@
 
 <p id="notice"><%= notice %></p>
 
-<div>
-  <p>
-    <div class="position-relative" id="map"></div>
+
+  <p><div class="card card-body p-4 p-md-5 shadow-sm p-2 mb-4 mx-auto">
+    <div class="position-relative mx-auto rounded" id="map"></div>
 </p>
+
 
 <p>
   <strong>Name:</strong>
@@ -28,7 +30,7 @@
   <%= @place.longitude %>
 </p>
 
-<%= link_to 'Edit', edit_place_path(@place) %> |
+<%= link_to 'Edit', edit_place_path(@place) %> 
 <%= link_to 'Back', places_path %>
 
 <p>
@@ -37,5 +39,6 @@
 
 </div>
 
+</div>
 
 
