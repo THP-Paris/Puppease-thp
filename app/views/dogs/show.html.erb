@@ -133,7 +133,7 @@
          
           <% end %>
 
-
+          <%= button_to "Add to panier", wishlist_dogs_path, params: {dog_id: @dog.id}, method: :post, remote: true, class: "btn btn-cart"%><br>
 
       </section>
       </section>

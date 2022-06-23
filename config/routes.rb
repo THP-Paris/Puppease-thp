@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :wishlists
   resources :places
   devise_for :users
+  resources :wishlist_dogs, only: [:create, :update, :destroy]
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :users do
     resources :avatars
