@@ -73,3 +73,4 @@ gem "aws-sdk-s3", require: false
 gem 'geocoder'
 gem 'ransack'
 gem 'ransack-enum'
+gem 'stripe'

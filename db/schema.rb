@@ -36,20 +36,6 @@ ActiveRecord::Schema.define(version: 2022_06_23_082030) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "add_dogs_to_wishlist", force: :cascade do |t|
-    t.bigint "dog_id"
-    t.bigint "wishlist_id"
-    t.index ["dog_id"], name: "index_add_dogs_to_wishlist_on_dog_id"
-    t.index ["wishlist_id"], name: "index_add_dogs_to_wishlist_on_wishlist_id"
-  end
-
-  create_table "dog_wishlists", force: :cascade do |t|
-    t.bigint "wishlist_id"
-    t.bigint "dog_id"
-    t.index ["dog_id"], name: "index_dog_wishlists_on_dog_id"
-    t.index ["wishlist_id"], name: "index_dog_wishlists_on_wishlist_id"
-  end
-
   create_table "dogs", force: :cascade do |t|
     t.string "name"
     t.datetime "birth_date"
@@ -128,10 +114,6 @@ ActiveRecord::Schema.define(version: 2022_06_23_082030) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "add_dogs_to_wishlist", "dogs"
-  add_foreign_key "add_dogs_to_wishlist", "wishlists"
-  add_foreign_key "dog_wishlists", "dogs"
-  add_foreign_key "dog_wishlists", "wishlists"
   add_foreign_key "places", "users"
   add_foreign_key "users", "places"
   add_foreign_key "wishlists", "dogs"
