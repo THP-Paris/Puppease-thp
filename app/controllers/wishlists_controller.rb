@@ -1,5 +1,8 @@
 class WishlistsController < ApplicationController
-  before_action :set_wishlist, only: %i[ show edit update destroy ]
+  include WishlistsHelper
+  before_action :authenticate_user!
+  before_action :only_current_wishlist
+
 
   # GET /wishlists or /wishlists.json
   def index
@@ -8,6 +11,8 @@ class WishlistsController < ApplicationController
 
   # GET /wishlists/1 or /wishlists/1.json
   def show
+    @wishlist = Wishlist.find(params[:id])
+
   end
 
   # GET /wishlists/new
@@ -20,21 +25,7 @@ class WishlistsController < ApplicationController
 
   # POST /wishlists or /wishlists.json
   def create
-    @wishlist = Wishlist.new(wishlist_params)
 
-    respond_to do |format|
-      if @wishlist.save
-        format.html { redirect_to wishlist_url(@wishlist), notice: "Chien ajouté à la wishlist" }
-        format.js {}
-     
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @wishlist.errors, status: :unprocessable_entity }
-        puts '$'*50
-        puts @wishlist.errors.messages
-        puts '$'*50
-      end
-    end
   end
 
   # PATCH/PUT /wishlists/1 or /wishlists/1.json
@@ -62,11 +53,6 @@ class WishlistsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_wishlist
-      @wishlist = Wishlist.find(params[:id])
-    end
-
     # Only allow a list of trusted parameters through.
     def wishlist_params
       params.require(:wishlist).permit(:limit, :user_id, :dog_id, fan: current_user)

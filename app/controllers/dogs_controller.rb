@@ -4,6 +4,7 @@ class DogsController < ApplicationController
   def index
     @q = Dog.ransack(params[:q])
     @dogs = @q.result
+    @wishlist = @current_wishlist
   end
 
   def show

@@ -1,19 +1,12 @@
-<p id="notice"><%= notice %></p>
+Voici la wishlist <%= current_user.wishlist.id%>  </br>
 
-<p>
-  <strong>Limit:</strong>
-  <%= @wishlist.limit %>
-</p>
+<% @wishlist.dogs.each do |dog| %>
 
-<p>
-  <strong>User:</strong>
-  <%= @wishlist.user_id %>
-</p>
+   <%= dog.name %> </br>
+   <%= dog.breed %></br>
 
-<p>
-  <strong>Dog:</strong>
-  <%= @wishlist.dog_id %>
-</p>
+    <% end %>
 
-<%= link_to 'Edit', edit_wishlist_path(@wishlist) %> |
-<%= link_to 'Back', wishlists_path %>
+
+    
+
