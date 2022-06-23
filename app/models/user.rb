@@ -20,4 +20,8 @@ class User < ApplicationRecord
          extend FriendlyId
          friendly_id :username, use: :slugged
 
+         def add_to_wishlist(dog)
+          wishlist.liked_dogs << liked_dog
+        end
+
 end

@@ -3,6 +3,7 @@ class Dog < ApplicationRecord
     has_one :wishlist
     has_many :fans, through: :wishlist, class_name: "User", foreign_key: "user_id"
     has_many_attached :pictures
+    has_many :wishlist_dogs, dependent: :destroy
     
 
     enum gender: {Mâle: 1, Femelle: 2}
