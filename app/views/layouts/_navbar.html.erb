@@ -1,58 +1,59 @@
-<!--
-<%= link_to "se connecter", new_user_session_path %> 
-<%= link_to "s'inscrire", new_user_registration_path %>
-
-<%= link_to "se deconnecter", destroy_user_session_path, method: :delete %> 
-
-
--->
-      
-<main class="page-wrapper">
-      <!-- Navbar-->
-      <header class="navbar navbar-expand-lg navbar-top navbar-light" data-scroll-header>
-        <div class="container">
-        <%= link_to image_tag("logos/logo_orange.svg", width: '150', height: '40'), root_path, class: "navbar-brand me-3 me-xl-4"%>
-          <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span> 
-          </button>
-          <i class="fi-user me-2"></i><%= link_to "se connecter", new_user_session_path, class: "btn btn-sm text-primary d-none d-lg-block order-lg-3" %> 
+<!-- Navbar with user account dropdown -->
+<header class="navbar navbar-expand-lg navbar-dark navbar-top bg-gradient shadow-sm mb-4">
+  <div class="container">
+      <%= link_to image_tag("logos/logo_orange.svg", width: '120', height: '40'), root_path, class: "navbar-brand flex-shrink-0 me-2 me-xl-4"%>
+    <button type="button" class="navbar-toggler ms-auto" data-bs-toggle="collapse" data-bs-target="#navbarUserNav" aria-controls="navbarUserNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <i class="fi-user me-2"></i><%= link_to "se connecter", new_user_session_path, class: "btn btn-sm text-light d-none d-lg-block order-lg-3" %> 
             
             <%= link_to "s'inscrire", new_user_registration_path, class: "btn btn-primary btn-sm rounded-pill ms-2 order-lg-3" %>
-          <div class="collapse navbar-collapse order-lg-2" id="navbarNav">
-            <ul class="navbar-nav navbar-nav-scroll" style="max-height: 35rem;">
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Nos chiens</a>
+    <% if user_signed_in? %>
+    <div class="dropdown order-lg-3">
+      <a href="#" class="d-inline-block py-1" data-bs-toggle="dropdown">
+        <img class="rounded-circle" src="path-to-user-avatar-image" width="40" alt="User">
+      </a>
+      <div class="dropdown-menu dropdown-menu-end">
+        <div class="d-flex align-items-start border-bottom px-3 py-1 mb-2" style="width: 16rem;">
+        <!-- get user avatar if he has one-->
+          <img class="rounded-circle" src="path-to-user-avatar-image" width="48" alt="User">
+          <div class="ps-2">
+            <h6 class="fs-base mb-0">Robert Fox</h6>
+            <div class="fs-xs py-2">(302) 555-0107<br>robert_fox@gmail.com</div>
+          </div>
+        </div>
+        <a href="#" class="dropdown-item">
+          <i class="fi-user opacity-60 me-2"></i>
+          Mes informations
+        </a>
+        <a href="#" class="dropdown-item">
+          <i class="fi-list opacity-60 me-2"></i>
+          Mes chiens
+        </a>
+        <a href="#" class="dropdown-item">
+          <i class="fi-heart opacity-60 me-2"></i>
+          Inscrire un chien
+        </a>
+        <a href="#" class="dropdown-item">
+          <i class="fi-star opacity-60 me-2"></i>
+          Ma wishlist
+        </a>
+        <div class="dropdown-divider"></div>
+        <%= link_to "Se deconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+      </div>
+    </div>
+    <%end%>
+    <div class="collapse navbar-collapse order-lg-2" id="navbarUserNav">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Nos chiens</a>
                 <ul class="dropdown-menu">
                   <li><%= link_to "Par catégorie", dogs_path, class: "dropdown-item"%>
                 </ul>
-              </li>
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Puppease</a>
-                <!--<ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="city-guide-about.html">A propos</a></li>
-                  <li><a class="dropdown-item" href="city-guide-about.html">Blog</a></li>
-                  <li><a class="dropdown-item" href="city-guide-contacts.html">Contact</a></li>
-                </ul>-->
-              </li>
-              <% if user_signed_in? %>
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mon compte</a>
-                <ul class="dropdown-menu">
-                  <li class="dropdown"><%= link_to "profil", user_path(current_user.id), class: "dropdown-item" %>
-                  <ul class="dropdown-menu">
-                      <li><%= link_to "modifier mes infos",  edit_user_registration_path, class: "dropdown-item" %></li>
-                    </ul>
-                  </li>
-                  <!--<li><a class="dropdown-item" href="city-guide-account-favorites.html">Favoris</a></li>-->
-                  <li class="dropdown"><a class="dropdown-item" href="#">Mes Chiens</a>
-                    <ul class="dropdown-menu">
-                      <li><%= link_to "inscrire mon chien", new_dog_path, class: "dropdown-item" %></li>
-                    </ul>
-                  </li>
-                  <!--<li><a class="dropdown-item" href="city-guide-account-notifications.html">Notifications</a></li>-->
-                  <li><%= link_to "Se deconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
-                </ul>
-              </li>
-              <%end%>
-            </ul>
-          </div>
-        </div>
-      </header>
-      </main>
+        </li>
+        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Puppease</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
