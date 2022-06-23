@@ -71,3 +71,5 @@ gem 'friendly_id'
 gem 'rails_admin'
 gem "aws-sdk-s3", require: false
 gem 'geocoder'
+gem 'ransack'
+gem 'ransack-enum'
