@@ -4,13 +4,13 @@
       <nav class="mb-3 pt-md-3" aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a <%= link_to "Accueil", root_path %></a></li>
-          <li class="breadcrumb-item active" aria-current="page"><%= @dog.name %></li>
+          
         </ol>
       </nav>
         <div class="d-sm-flex align-items-center justify-content-between mb-4 pb-sm-2 border-bottom pb-3 mb-4">
           <h1 class="h2 me-3 mb-sm-0"><%= @dog.name %></h1>
           <div class="text-nowrap">
-            <button class="btn btn-icon btn-light-primary btn-xs shadow-sm rounded-circle" type="button" data-bs-toggle="tooltip" title="Add to Wishlist"><i class="fi-heart"></i></button>
+            <%= button_to wishlist_dogs_path, params: {dog_id: @dog.id}, method: :post, remote: true, class:"btn btn-primary btn-lg rounded-pill w-sm-auto w-100" do %><i class="bi bi-heart"></i><% end %>
               </div>
             </div>
           </div>
@@ -18,7 +18,7 @@
  
         <div>
 
-
+       
         
 <!-- Page content-->
       <section class="container pb-5 mb-md-3">

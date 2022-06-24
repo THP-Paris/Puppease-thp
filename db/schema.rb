@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 2022_06_23_082030) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["dog_id"], name: "index_wishlists_on_dog_id"
+    t.index ["user_id", "dog_id"], name: "index_wishlists_on_user_id_and_dog_id", unique: true
     t.index ["user_id"], name: "index_wishlists_on_user_id"
   end
 
