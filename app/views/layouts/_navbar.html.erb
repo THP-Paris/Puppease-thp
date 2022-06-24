@@ -2,7 +2,7 @@
 <header class="navbar navbar-expand-lg navbar-light bg-gradient shadow-sm">
   <div class="container">
 <!-- logo-->
-<%= link_to image_tag("logos/logo.png", width: '150', height: '80'), root_path, class: "navbar-brand flex-shrink-0 me-2 me-xl-4"%>
+<%= link_to image_tag("logos/logo.png", width: '150', height: '80'), dogs_path, class: "navbar-brand flex-shrink-0 me-2 me-xl-4"%>
     <!--<button type="button" class="navbar-toggler ms-auto" data-bs-toggle="collapse" data-bs-target="#navbarUserNav" aria-controls="navbarUserNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>-->
@@ -59,7 +59,7 @@
 
    <div class="collapse navbar-collapse order-lg-2" id="navbarUserNav">
       <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link text-light" <%= link_to "Nos chiens", root_path %></li>
+        <li class="nav-item"><a class="nav-link text-light" <%= link_to "Nos chiens", dogs_path %></li>
        
         <% if user_signed_in? %>
         <li class="nav-item "><a class="nav-link text-light" <%= link_to "Inscrire mon chien", new_dog_path %></li>
