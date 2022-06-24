@@ -1,6 +1,7 @@
 class PlacesController < ApplicationController
 include PlacesHelper
   before_action :set_place, only: %i[ show edit update destroy ]
+  
 
   # GET /places or /places.json
   def index
