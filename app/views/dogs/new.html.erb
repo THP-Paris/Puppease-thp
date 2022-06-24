@@ -27,7 +27,7 @@
 
 <div class="mb-4">
 <label for="file-input" class="form-label">Race</label>
-<select class="form-control"<%= form.select :breed, Dog::breeds.keys %>
+<select class="form-control"<%= form.select :breed, Dog::breeds.keys.sort %>
 </div>
 
 <div class="mb-4">
