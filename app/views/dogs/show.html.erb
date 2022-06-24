@@ -10,7 +10,8 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4 pb-sm-2 border-bottom pb-3 mb-4">
           <h1 class="h2 me-3 mb-sm-0"><%= @dog.name %></h1>
           <div class="text-nowrap">
-            <%= button_to wishlist_dogs_path, params: {dog_id: @dog.id}, method: :post, remote: true, class:"btn btn-primary btn-lg rounded-pill w-sm-auto w-100" do %><i class="bi bi-heart"></i><% end %>
+          <% if user_signed_in? %>
+            <%= button_to wishlist_dogs_path, params: {dog_id: @dog.id}, method: :post, remote: true, class:"btn btn-primary btn-lg rounded-pill w-sm-auto w-100" do %><i class="bi bi-heart"></i><% end %><%end%>
               </div>
             </div>
           </div>

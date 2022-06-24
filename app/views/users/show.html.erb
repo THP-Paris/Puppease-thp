@@ -21,6 +21,7 @@
   </div>
   <!-- Page content-->
   <div class="card card-body p-4 p-md-5 shadow-sm">
+
       <!-- Name-->
       <div class="border-bottom pb-3 mb-3">
         <div class="d-flex align-items-center justify-content-between">
@@ -28,11 +29,9 @@
             <label class="form-label fw-bold">Nom</label>
             <div id="name-value"><%= @user.username %></div>
           </div>
-          <div class="me-n3" data-bs-toggle="tooltip" title="Edit"><a class="nav-link py-0" href="#name-collapse" data-bs-toggle="collapse"><i class="fi-edit"></i></a></div>
+          <div class="me-n3" data-bs-toggle="tooltip" title="Edit"><a class="nav-link py-0""><i class="bi bi-person-circle"></i></a></div>
         </div>
-        <div class="collapse" id="name-collapse" data-bs-parent="#personal-info">
-          <input class="form-control mt-3" type="text" data-bs-binded-element="#name-value" data-bs-unset-value="Not specified" value="<%= @user.username %>">
-        </div>
+
       </div>
 
       
@@ -43,10 +42,7 @@
             <label class="form-label fw-bold">Email</label>
             <div id="email-value"><%= @user.email %></div>
           </div>
-          <div class="me-n3" data-bs-toggle="tooltip" title="Edit"><a class="nav-link py-0" href="#email-collapse" data-bs-toggle="collapse"><i class="fi-edit"></i></a></div>
-        </div>
-        <div class="collapse" id="email-collapse" data-bs-parent="#personal-info">
-          <input class="form-control mt-3" type="email" data-bs-binded-element="#email-value" data-bs-unset-value="Not specified" value="<%= @user.email %>">
+          <div class="me-n3" data-bs-toggle="tooltip" title="Edit"><a class="nav-link py-0" href="email-collapse" data-bs-toggle="collapse"><i class="bi bi-envelope"></i></a></div>
         </div>
       </div>
 
@@ -57,11 +53,9 @@
             <label class="form-label fw-bold">Numéro de téléphone</label>
             <div id="phone-value"><%= @user.phone %></div>
           </div>
-          <div class="me-n3" data-bs-toggle="tooltip" title="Edit"><a class="nav-link py-0" href="#phone-collapse" data-bs-toggle="collapse"><i class="fi-edit"></i></a></div>
+          <div class="me-n3" data-bs-toggle="tooltip" title="Edit"><a class="nav-link py-0" href="phone-collapse" data-bs-toggle="collapse"><i class="bi bi-telephone-fill"></i></i></a></div>
         </div>
-        <div class="collapse" id="phone-collapse" data-bs-parent="#personal-info">
-          <input class="form-control mt-3" type="text" data-bs-binded-element="#phone-value" data-bs-unset-value="Not specified" value="<%= @user.phone %>">
-        </div>
+
       </div>
 
       <% if @place%>
@@ -72,13 +66,8 @@
             <label class="form-label fw-bold">Ville</label>
             <div id="address-value"><%= @place.city%></div>
           </div>
-          <div class="me-n3" data-bs-toggle="tooltip" title="Edit"><a class="nav-link py-0" href="#address-collapse" data-bs-toggle="collapse"><i class="fi-edit"></i></a></div>
-        </div>
-        <div class="collapse" id="address-collapse" data-bs-parent="#personal-info">
-          <input class="form-control mt-3" type="text" data-bs-binded-element="#address-value" data-bs-unset-value="Not specified" placeholder="ville">
-          
-        </div>
-        
+          <div class="me-n3" data-bs-toggle="tooltip" title="Edit"><a class="nav-link py-0" href="address-collapse" data-bs-toggle="collapse"><i class="bi bi-house-door"></i></a></div>
+        </div>        
       </div>
      
       <% end %>
