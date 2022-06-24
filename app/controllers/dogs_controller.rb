@@ -1,5 +1,8 @@
 class DogsController < ApplicationController
+include DogsHelper
+
   before_action :authenticate_user!, only:[:create]
+  before_action :set_place, only:[:new]
 
   def index
     @q = Dog.ransack(params[:q])
