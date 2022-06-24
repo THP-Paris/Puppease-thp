@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     get 'cancel', to: 'checkout#cancel', as: 'checkout_cancel'
   end
 
-root 'dogs#index'
-get '/home', to: 'static_pages#home'
+root 'static_pages#home'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
