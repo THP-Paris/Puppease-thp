@@ -1,0 +1,17 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4 pb-sm-2 border-bottom pb-3 mb-4">
+      <h1 class="h2 me-3 mb-sm-0">Localisation</h1></div>
+     
+     
+      <script>
+      document.addEventListener("DOMContentLoaded", function(){
+          initMap(<%=@place.latitude%>, <%= @place.longitude%>)
+      });
+      </script>
+
+      <p id="notice"><%= notice %></p>
+
+      <div>
+        <p>
+          <div class="mx-auto rounded-3" id="map" style="width: 100%;"></div>
+      </p>
+      </div>

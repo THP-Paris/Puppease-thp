@@ -1,14 +1,28 @@
-<div class="col-md-6 px-4 pt-2 pb-4 px-sm-5 pb-sm-5 pt-md-5">
+<div class="px-4 pt-2 pb-4 px-sm-5 pb-sm-5 pt-md-5">
+<!-- Breadcrumb-->
+      <nav class="mb-3" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a <%= link_to "Accueil", root_path %></a></li>
+          <li class="breadcrumb-item active" aria-current="page">Nouveau chien</li>
+        </ol>
+      </nav>
 
-<h2> Inscris ton toutou </h2>
+      <div class="d-sm-flex align-items-center justify-content-between mb-4 pb-sm-2 border-bottom pb-3 mb-4">
+      <h1 class="h2 me-3 mb-sm-0">Inscrivez votre chien</h1></div>
 
-
+      <!-- Page content-->
+      <div class="row">
+      <div class="card card-body p-4 p-md-5 shadow-sm col-6 m-4">
+      
+     
 <%= form_for @dog, method: :post do |form| %>
+
 
 <div class="mb-4">
 <label for="file-input" class="form-label">Nom</label>
 <input class="form-control" type="name" placeholder="Entrez son nom" required="" <%= form.text_field :name, autofocus: true %>
 </div>
+
 
 <div class="mb-4">
 <label for="file-input" class="form-label">Genre</label>
@@ -27,7 +41,7 @@
 
 <div class="mb-4">
 <label for="file-input" class="form-label">Race</label>
-<select class="form-control"<%= form.select :breed, Dog::breeds.keys %>
+<select class="form-control"<%= form.select :breed, Dog::breeds.keys.sort %>
 </div>
 
 <div class="mb-4">
@@ -41,7 +55,7 @@
 </div>
 
 <div class="mb-4">
-<label for="file-input" class="form-label">Vacciné </label>
+<label for="file-input" class="form-label">Vaccins à jour </label>
 <select class="form-control"<%= form.select :vaccine, Dog::vaccines.keys %>
 </div>
 
@@ -57,11 +71,19 @@
   <input class="form-control" type="file" id="file-input"<%= form.file_field :pictures, multiple: true %>
 </div>
 
-
 <div class="actions">
 <button class="btn btn-primary btn-lg rounded-pill w-100 mt-3" type="submit"><%= "Inscrire mon chien" %></button>
 </div>
 
 <% end %>
+
+</div>
+
+
+<div class="card card-body p-4 p-md-5 shadow-sm col-4 m-4 h-50">
+<img class="rounded-3 img-fluid" alt="Rounded image" <%= image_tag("funny_dog.png") %>
+</div>
+
+</div>
 
 </div>

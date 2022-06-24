@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 2022_06_23_082030) do
     t.string "slug"
     t.bigint "place_id"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["place_id"], name: "index_users_on_place_id", unique: true
+    t.index ["place_id"], name: "index_users_on_place_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
   end
