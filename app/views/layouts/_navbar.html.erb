@@ -30,17 +30,13 @@
         <%= link_to wishlists_path, class: "dropdown-item" do %>
           <i class="bi bi-heart opacity-20 me-2"></i>Whishlist
         <%end%>
-        <a href="#" class="dropdown-item">
-          <i class="fi-star opacity-60 me-2"></i>
-          Reviews
-        </a>
-        <a href="#" class="dropdown-item">
-          <i class="fi-bell opacity-60 me-2"></i>
-          Notifications
-        </a>
+        <%= link_to new_dog_path, class: "dropdown-item" do %>
+          <i class="bi bi-input-cursor opacity-20 me-2"></i>Inscrire mon chien
+        <%end%>
         <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item">Help</a>
-        <a href="#" class="dropdown-item">Sign Out</a>
+        <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
+          <i class="bi bi-x-circle opacity-20 me-2"></i>Se deconnecter
+        <%end%>
       </div>
     </div>
     <%end%>
