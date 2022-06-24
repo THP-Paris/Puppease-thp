@@ -7,11 +7,11 @@ class WishlistDogsController < ApplicationController
           respond_to do |format|
             if @wishlist_dog.save
             format.html { redirect_to wishlist_path(Wishlist.find_by(user_id: current_user.id).id) }
-            format.js { }
+            format.js {'create'}
            
             else
-              format.html {}
-              format.json { render json: @wishlist_dog.errors, status: :unprocessable_entity }
+              format.html {render :create, notice: "chien deja ajouté"}
+              format.js {render:'fail_save'}
               puts '$'*50
               puts @wishlist_dog.errors.messages
               puts '$'*50
