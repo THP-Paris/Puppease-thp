@@ -1,60 +1,89 @@
 
-<div class="container-fluid text-center mb-5 mt-4">
-<div class="row justify-content-around">
 
 <% if user_signed_in? %>
 
 <%= link_to "voir ma wishlist", wishlist_path(current_user.id)%> 
-<% end %></br>
+<% end %></br></br>
+
+
+<%= render 'layouts/search' %>
+
+<!-- Categories-->
 <%= search_form_for @q do |f| %>
 
-  Rechercher un chien 
+  <form class="form-group d-block align-self-center">
+  <div class="card card-body p-2 p-md-3 shadow-sm m-4">
+  <div class="row g-0 ms-sm-n2 mx-auto">
+    <div class="col-md-7 d-flex">
 
-  <%= f.label :name_cont, 'par nom' %>
-  <%= f.search_field :name_cont%><br>
 
-  <%= f.label :breed %>
-  <%= f.select(:breed_eq, options_for_select(Dog.breeds.map {|k, v| [k.humanize.capitalize, v]}, f.object.breed_eq), { include_blank: true }, {class: "form-control" }) %>
+    <div class="m-3">
+<h3 class="icon-box-title fs-sm ps-1 pe-2"><%= f.label :Race %> <%= f.select(:breed_eq, options_for_select(Dog.breeds.map {|k, v| [k.humanize.capitalize, v]}, f.object.breed_eq), { include_blank: true }) %></h3></a></div>
+
+    
+<div class="m-3">
+    <h3 class="icon-box-title fs-sm ps-1 pe-2 mb-0"><%= f.label :gender_eq, 'Femelles' %></br>
+    <%= f.check_box :gender_eq, {}, 2, nil %></br>
   
-  <%= f.label :color %>
-  <%= f.select(:color_eq, options_for_select(Dog.colors.map {|k, v| [k.humanize.capitalize, v]}, f.object.color_eq), { include_blank: true }, {class: "form-control" }) %>
+    <%= f.label :gender_eq, 'Mâles' %>
+    <%= f.check_box :gender_eq, {}, 1, nil %>
+</h3></a></div>
 
-  <%= f.label :gender_eq, 'Femelles' %>
-  <%= f.check_box :gender_eq, {}, 2, nil %>
-
-  <%= f.label :gender_eq, 'Mâles' %>
-  <%= f.check_box :gender_eq, {}, 1, nil %><br>
-
-  Vaccinés
-  <%= f.label :vaccine_eq, 'Oui' %>
-  <%= f.check_box :vaccine_eq, {}, 0, nil %>
-
-  <%= f.label :vaccine_eq, 'Non' %>
-  <%= f.check_box :vaccine_eq, {}, 1, nil %><br>
-
-  Faisant partie du LOF
-  <%= f.label :lof_eq, 'Oui' %>
-  <%= f.check_box :lof_eq, {}, 0, nil %>
-
-  <%= f.label :lof_eq, 'Non' %>
-  <%= f.check_box :lof_eq, {}, 1, nil %><br>
+<div class="m-3">
+    <h3 class="icon-box-title fs-sm ps-1 pe-2 mb-0"><%= f.label :Pelage %><%= f.select(:color_eq, options_for_select(Dog.colors.map {|k, v| [k.humanize.capitalize, v]}, f.object.color_eq), { include_blank: true }, {class: "form-control" }) %> </h3></a>
+</div>
+   
+<div class="m-3">
+    <h3 class="icon-box-title fs-sm ps-1 pe-2 mb-0">Chiens récompensés
+    <%= f.label :reward_eq, 'Oui' %>
+    <%= f.check_box :reward_eq, {}, 0, nil %>
   
-  Chiens récompensés
-  <%= f.label :reward_eq, 'Oui' %>
-  <%= f.check_box :reward_eq, {}, 0, nil %>
+    <%= f.label :reward_eq, 'Non' %>
+    <%= f.check_box :reward_eq, {}, 1, nil %></h3></a></div>
 
-  <%= f.label :reward_eq, 'Non' %>
-  <%= f.check_box :reward_eq, {}, 1, nil %><br>
+   
+    <div class="m-3">
+    <h3 class="icon-box-title fs-sm ps-1 pe-2 mb-0">Vacciné <%= f.label :vaccine_eq, 'Oui' %> <%= f.check_box :vaccine_eq, {}, 0, nil %> <%= f.label :vaccine_eq, 'Non' %>
+    <%= f.check_box :vaccine_eq, {}, 1, nil %></h3></a></div>
 
-  <%=  f.label 'Né après le:' %>
-  <%= f.date_field :birth_date_gteq, class: 'form-control input-sm', 'datepicker' => true %>
+    
+    <div class="m-3">
+    <h3 class="icon-box-title fs-sm ps-1 pe-2 mb-0">LOF <%= f.label :lof_eq, 'Oui' %> <%= f.check_box :lof_eq, {}, 0, nil %>
+     <%= f.label :lof_eq, 'Non' %> <%= f.check_box :lof_eq, {}, 1, nil %></h3></a></div>
 
-  <%=  f.label 'Né avant le:' %>
-  <%= f.date_field :birth_date_lteq, class: 'form-control input-sm', 'datepicker' => true %>
+     <div class="m-3">
+     <h3 class="icon-box-title fs-sm ps-1 pe-2 mb-0"><%=  f.label 'Né avant le:' %>
+     <%= f.date_field :birth_date_lteq, class: 'form-control input-sm', 'datepicker' => true %></h3></a></div>
+
+<div class="m-3">
+     <h3 class="icon-box-title fs-sm ps-1 pe-2 mb-0"><%=  f.label 'Né après le:' %>
+     <%= f.date_field :birth_date_gteq, class: 'form-control input-sm', 'datepicker' => true %></h3></a></div>
+
+     <div class="actions">
+     <button class="btn btn-primary btn-lg rounded-pill mt-3" type="submit"><%= "Rechercher" %></button>
+     </div>
+     </div> 
+     </div>
+    
+     <% end %>
+     </div>
+     </div>
+     
+     </div>
+     
+     </form>
+   
   
+      
+   
+     <div class="container-fluid text-center mb-5 mt-4">
+     <div class="row justify-content-around">
 
-  <%= f.submit %>
-<% end %>
+
+
+
+     <a class="icon-box card flex-row align-items-center flex-shrink-0 card-hover border-0 shadow-sm">
+
 
 <% @dogs.with_attached_pictures.each do |dog| %>
   
@@ -97,5 +126,6 @@
   </div>
 </div>
 <% end %>
+
 </div>
 </div>
