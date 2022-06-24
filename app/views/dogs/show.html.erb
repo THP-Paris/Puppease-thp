@@ -4,13 +4,13 @@
       <nav class="mb-3 pt-md-3" aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a <%= link_to "Accueil", root_path %></a></li>
-          <li class="breadcrumb-item active" aria-current="page"><%= @dog.name %></li>
+          
         </ol>
       </nav>
         <div class="d-sm-flex align-items-center justify-content-between mb-4 pb-sm-2 border-bottom pb-3 mb-4">
           <h1 class="h2 me-3 mb-sm-0"><%= @dog.name %></h1>
           <div class="text-nowrap">
-            <button class="btn btn-icon btn-light-primary btn-xs shadow-sm rounded-circle" type="button" data-bs-toggle="tooltip" title="Add to Wishlist"><i class="fi-heart"></i></button>
+            <%= button_to wishlist_dogs_path, params: {dog_id: @dog.id}, method: :post, remote: true, class:"btn btn-primary btn-lg rounded-pill w-sm-auto w-100" do %><i class="bi bi-heart"></i><% end %>
               </div>
             </div>
           </div>
@@ -18,7 +18,7 @@
  
         <div>
 
-
+       
         
 <!-- Page content-->
       <section class="container pb-5 mb-md-3">
@@ -35,7 +35,7 @@
                   <div class="ps-2 ms-1">
                     <h3 class="h5 mb-2"> <%= @dog.name %></h3>
                     <ul class="list-unstyled d-flex flex-wrap fs-sm">
-                      <li class="me-2 mb-1 pe-1"><b> <%= @dog.gender %> </b></li>
+                      <li class="me-2 mb-1 pe-1"><b><%= @dog.gender %> </b></li>
                     </ul>
                   </div>
                 </div>
@@ -46,17 +46,17 @@
                   <ul class="nav row row-cols-sm-2 row-cols-1 gy-1">
 
 
-                    <li class="col"><a class="nav-link p-0 fw-normal d-flex align-items-start"><i class="fi-map-pin mt-1 me-2 align-middle opacity-70"></i><%= @dog.breed %></a></li>
+                    <li class="col"><a class="nav-link p-0 fw-normal d-flex align-items-start"><i class="bi bi-emoji-smile me-2 align-middle opacity-70"></i><%= @dog.breed %></a></li>
 
-                    <li class="col"><a class="nav-link d-inline-block p-0 fw-normal d-inline-flex align-items-start"><i class="fi-phone mt-1 me-2 align-middle opacity-70"></i>Pelage : <%= @dog.color %> </a>
+                    <li class="col"><a class="nav-link d-inline-block p-0 fw-normal d-inline-flex align-items-start"><i class="bi bi-palette me-2 align-middle opacity-70"></i>Pelage : <%= @dog.color %> </a>
 
-                    <li class="col"><a class="nav-link p-0 fw-normal d-flex align-items-start"><i class="fi-globe mt-1 me-2 align-middle opacity-60"></i> Né(e) le <%=(@dog.birth_date).strftime("%d/%m/%Y") %></a></li>
+                    <li class="col"><a class="nav-link p-0 fw-normal d-flex align-items-start"><i class="bi bi-calendar-check me-2 align-middle opacity-60"></i> Né(e) le <%=(@dog.birth_date).strftime("%d/%m/%Y") %></a></li>
 
-                    <li class="col"><a class="nav-link p-0 fw-normal d-flex align-items-start"><i class="fi-mail mt-1 me-2 align-middle opacity-70"></i>Vacciné : <%= @dog.vaccine %>
+                    <li class="col"><a class="nav-link p-0 fw-normal d-flex align-items-start"><i class="bi bi-file-medical me-2 align-middle opacity-70"></i>Vacciné : <%= @dog.vaccine %>
 
-                    <li class="col"><a class="nav-link p-0 fw-normal d-flex align-items-start"><i class="fi-map-pin mt-1 me-2 align-middle opacity-70"></i>Inscrit au LOF : <%= @dog.lof %></a></li>
+                    <li class="col"><a class="nav-link p-0 fw-normal d-flex align-items-start"><i class="bi bi-award-fill me-2 align-middle opacity-70"></i>Inscrit au LOF : <%= @dog.lof %></a></li>
 
-                    <li class="col"><a class="nav-link d-inline-block p-0 fw-normal d-inline-flex align-items-start"><i class="fi-phone mt-1 me-2 align-middle opacity-70"></i>Recompenses : <%= @dog.reward %> </a>
+                    <li class="col"><a class="nav-link d-inline-block p-0 fw-normal d-inline-flex align-items-start"><i class="bi bi-trophy me-2 align-middle opacity-70"></i>Recompenses : <%= @dog.reward %> </a>
 
 
                   </ul>
@@ -71,7 +71,8 @@
                     <div class="col">
                     <% if user_signed_in? %>
                     <%= button_to "Ajouter à la liste de favoris", wishlist_dogs_path, params: {dog_id: @dog.id}, method: :post, remote: true, class:"btn btn-primary btn-lg rounded-pill w-sm-auto w-100"%><br>
-                    <%= button_to "Obtenir coordonnées", checkout_create_path, class: 'btn btn-success my-3', remote: true %>
+
+                    <%= button_to "Obtenir les coordonnées", checkout_create_path, class: 'btn btn-success btn-lg rounded-pill w-sm-auto w-100', remote: true %>
                   <% end %></a></div>
                   </div>
                 </div>

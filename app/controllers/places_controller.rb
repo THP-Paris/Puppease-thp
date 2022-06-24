@@ -1,5 +1,7 @@
 class PlacesController < ApplicationController
+include PlacesHelper
   before_action :set_place, only: %i[ show edit update destroy ]
+  
 
   # GET /places or /places.json
   def index
@@ -27,8 +29,8 @@ class PlacesController < ApplicationController
 
     respond_to do |format|
       if @place.save
-        format.html { redirect_to place_url(@place), notice: "Place was successfully created." }
-        format.json { render :show, status: :created, location: @place }
+        format.html { redirect_to  edit_user_registration_path(current_user.id), notice: "Ville enregistrée"}
+        format.js {}
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @place.errors, status: :unprocessable_entity }

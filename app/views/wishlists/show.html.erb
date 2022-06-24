@@ -2,11 +2,7 @@
     <div class="container mb-md-4 py-5">
       <!-- Breadcrumbs-->
       <nav class="mb-4" aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a <%= link_to "Accueil", root_path %></a></li>
-          <li class="breadcrumb-item"><a <%= link_to "Profil", user_path %></a></li>
-          <li class="breadcrumb-item active"<%= link_to "Favoris", wishlist_path %></li>
-        </ol>
+
       </nav>
 
     
@@ -23,7 +19,7 @@
           </div>
           
         </div><a class="nav-link p-0 d-none d-md-block"<i class="fi-logout mt-n1 me-2"<%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %></i></a>
-      </div>
+      </div>  
 
 
       <!-- Page content-->
@@ -33,7 +29,7 @@
           <div class="collapse d-md-block" id="account-nav">
             <ul class="nav nav-pills flex-column flex-md-row pt-3 pt-md-0 pb-md-4 border-bottom-md">
               <li class="nav-item mb-md-0 me-md-2 pe-md-1"><a class="nav-link" <%= link_to "Profil", user_path(@user) %></i></a></li>
-              <li class="nav-item mb-md-0 me-md-2 pe-md-1"><a class="nav-link active" href="city-guide-account-favorites.html" aria-current="page"><i class="fi-heart mt-n1 me-2 fs-base"></i>Favoris</a></li>
+              <li class="nav-item mb-md-0 me-md-2 pe-md-1"><a class="nav-link active" href="city-guide-account-favorites.html" aria-current="page"><i class="bi bi-heart mt-n1 me-2 fs-base"></i>Favoris</a></li>
 
 
 

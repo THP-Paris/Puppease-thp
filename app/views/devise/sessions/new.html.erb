@@ -1,8 +1,8 @@
 <!-- form sign in -->
 <body class="text-center">
 <main class="form-signin w-30 m-auto">
-<%= image_tag("icons/favicon.png", width: '100', height: '100', class: 'mb-4')%>
-<h2>Log in</h2>
+<%= image_tag("icons/favicon.png", width: '100', height: '100', class: 'my-4')%>
+<h2>Se connecter</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -11,19 +11,19 @@
   </div>
 
   <div class="field">
-    <%= f.label :password, class: 'py-3' %><br />
+    <%= f.label :mot_de_passe, class: 'py-3' %><br />
     <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
   </div>
 
   <% if devise_mapping.rememberable? %>
     <div class="field">
       <%= f.check_box :remember_me %>
-      <%= f.label :remember_me, class: 'py-3' %>
+      <%= f.label :se_souvenir_de_moi, class: 'py-3' %>
     </div>
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in", class: 'btn btn-primary btn-lg rounded-pill w-100' %>
+    <%= f.submit "Je me connecte", class: 'btn btn-primary btn-lg rounded-pill w-100' %>
   </div>
 <% end %>
   <div class="mt-3">

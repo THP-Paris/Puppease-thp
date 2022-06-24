@@ -1,0 +1,72 @@
+<!-- Categories-->
+<%= search_form_for @q do |f| %>
+
+  <section class="border border-accent rounded-2 p-4 m-3">
+  <div class="row g-0 ms-sm-n2 container-fluid">
+    <div class="col d-flex">
+
+
+<div class="m-0">
+<h3 class="icon-box-title fs-sm ps-1 pe-2 mb-0"><%= f.label :Race %></br></br> <select class="form-control" id="floating-select"<%= f.select(:breed_eq, options_for_select(Dog.breeds.map {|k, v| [k.humanize.capitalize, v]}, f.object.breed_eq), { include_blank: true }) %></h3></a></select></div>
+
+    
+
+<div class="m-2">
+    <h3 class="icon-box-title fs-sm ps-1 pe-2 mb-0"><%= f.label :Pelage %> <i class="bi bi-palette"></i></br></br><select class="form-control" id="select-input"<%= f.select(:color_eq, options_for_select(Dog.colors.map {|k, v| [k.humanize.capitalize, v]}, f.object.color_eq), { include_blank: true }) %> </h3></a>
+</div>
+
+<div class="m-2 pt-1">
+<h3 class="icon-box-title fs-sm ps-1 pe-2 mb-0"><%= f.label :gender_eq, 'Femelles' %></br></br>
+<%= f.check_box :gender_eq, {}, 2, nil %></br></h3></a> </div>
+
+<div class="m-2 pt-1">
+<h3 class="icon-box-title fs-sm ps-1 pe-2 mb-0"><%= f.label :gender_eq, 'Mâles' %></br></br>
+<%= f.check_box :gender_eq, {}, 1, nil %>
+</h3></a></div>
+   
+<div class="m-2 pt-1">
+    <h3 class="icon-box-title fs-sm ps-1 pe-2 mb-0">Récompenses <i class="bi bi-trophy mb-2"></i></h3></br>
+    <%= f.label :reward_eq, 'Oui' %>
+    <%= f.check_box :reward_eq, {}, 0, nil %></br>
+  
+    <%= f.label :reward_eq, 'Non' %>
+    <%= f.check_box :reward_eq, {}, 1, nil %></h3></a></div>
+
+   
+    <div class="m-2 p-1">
+    <h3 class="icon-box-title fs-sm ps-1 pe-2 mb-0">Vacciné <i class="bi bi-file-medical mb-2"></i></h3></br>
+    <%= f.label :vaccine_eq, 'Oui' %> 
+    <%= f.check_box :vaccine_eq, {}, 0, nil %> </br>
+    <%= f.label :vaccine_eq, 'Non' %>
+    <%= f.check_box :vaccine_eq, {}, 1, nil %></h3></a></div>
+
+    
+
+    <div class="m-2 p-1">
+    <h3 class="icon-box-title fs-sm ps-1 pe-2 mb-0">Inscrit au LOF <i class="bi bi-award-fill mb-2"></i></h3></br>
+    <%= f.label :lof_eq, 'Oui' %> 
+    <%= f.check_box :lof_eq, {}, 0, nil %></br>
+     <%= f.label :lof_eq, 'Non' %>
+      <%= f.check_box :lof_eq, {}, 1, nil %></a></div>
+
+
+<div class="m-2 p-1">
+     <h3 class="icon-box-title fs-sm ps-1 pe-2 mb-0"><%=  f.label 'Né après le:' %>
+     <%= f.date_field :birth_date_gteq, class: 'form-control input-sm', 'datepicker' => true %></h3></a></div>
+
+     <div class="actions">
+     <button class="btn bg-gradient text-white rounded-pill m-3 mt-4" type="submit"><i class="bi bi-search"></i> <%= "Rechercher" %></button>
+     <% end %>
+     </div>
+     
+     </div> 
+
+     </div>
+    
+  
+  
+    
+     
+     
+     </section>
+  

@@ -1,60 +1,12 @@
-
 <div class="container-fluid text-center mb-5 mt-4">
 <div class="row justify-content-around">
 
-<% if user_signed_in? %>
 
-<%= link_to "voir ma wishlist", wishlist_path(current_user.id)%> 
-<% end %></br>
-<%= search_form_for @q do |f| %>
 
-  Rechercher un chien 
 
-  <%= f.label :name_cont, 'par nom' %>
-  <%= f.search_field :name_cont%><br>
+<%= render 'layouts/search' %>
 
-  <%= f.label :breed %>
-  <%= f.select(:breed_eq, options_for_select(Dog.breeds.map {|k, v| [k.humanize.capitalize, v]}, f.object.breed_eq), { include_blank: true }, {class: "form-control" }) %>
-  
-  <%= f.label :color %>
-  <%= f.select(:color_eq, options_for_select(Dog.colors.map {|k, v| [k.humanize.capitalize, v]}, f.object.color_eq), { include_blank: true }, {class: "form-control" }) %>
 
-  <%= f.label :gender_eq, 'Femelles' %>
-  <%= f.check_box :gender_eq, {}, 2, nil %>
-
-  <%= f.label :gender_eq, 'Mâles' %>
-  <%= f.check_box :gender_eq, {}, 1, nil %><br>
-
-  Vaccinés
-  <%= f.label :vaccine_eq, 'Oui' %>
-  <%= f.check_box :vaccine_eq, {}, 0, nil %>
-
-  <%= f.label :vaccine_eq, 'Non' %>
-  <%= f.check_box :vaccine_eq, {}, 1, nil %><br>
-
-  Faisant partie du LOF
-  <%= f.label :lof_eq, 'Oui' %>
-  <%= f.check_box :lof_eq, {}, 0, nil %>
-
-  <%= f.label :lof_eq, 'Non' %>
-  <%= f.check_box :lof_eq, {}, 1, nil %><br>
-  
-  Chiens récompensés
-  <%= f.label :reward_eq, 'Oui' %>
-  <%= f.check_box :reward_eq, {}, 0, nil %>
-
-  <%= f.label :reward_eq, 'Non' %>
-  <%= f.check_box :reward_eq, {}, 1, nil %><br>
-
-  <%=  f.label 'Né après le:' %>
-  <%= f.date_field :birth_date_gteq, class: 'form-control input-sm', 'datepicker' => true %>
-
-  <%=  f.label 'Né avant le:' %>
-  <%= f.date_field :birth_date_lteq, class: 'form-control input-sm', 'datepicker' => true %>
-  
-
-  <%= f.submit %>
-<% end %>
 
 <% @dogs.with_attached_pictures.each do |dog| %>
   
@@ -97,5 +49,6 @@
   </div>
 </div>
 <% end %>
+
 </div>
 </div>
