@@ -12,6 +12,12 @@
     User.create(username: Faker::Name.name, phone: Faker::PhoneNumber.cell_phone_in_e164, email: "email#{Faker::Number.number(digits: 2)}@yopmail.com", password: Faker::Construction.trade)
 end
 
+brian = User.create(username: "Brian", email: "brian.variengien@gmail.com", password:"puppease", admin:true)
+
+eva = User.create(username: "Eva", email: "eva.laurent.78@gmail.com", password:"puppease", admin:true)
+
+laurence = User.create(username: "Laurence", email: "lau13perdereau@gmail.com", password:"puppease", admin:true)
+
 
 Place.create!([
     { "city": "Paris", "latitude": "48.856613", "longitude": "2.352222", "user_id":rand(1..13)},
@@ -31,6 +37,7 @@ Place.create!([
 
 
 User.update(place_id: rand(1..12))
+
 
 
 require 'open-uri'
