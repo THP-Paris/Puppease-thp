@@ -21,22 +21,15 @@
             <div class="fs-xs py-2">mon telephone<br>mon email</div>
           </div>
         </div>
-        <a href="#" class="dropdown-item">
-          <i class="fi-user opacity-60 me-2"></i>
-          Personal Info
-        </a>
-        <a href="#" class="dropdown-item">
-          <i class="fi-lock opacity-60 me-2"></i>
-          Password & Security
-        </a>
-        <a href="#" class="dropdown-item">
-          <i class="fi-list opacity-60 me-2"></i>
-          My Listings
-        </a>
-        <a href="#" class="dropdown-item">
-          <i class="fi-heart opacity-60 me-2"></i>
-          Wishlist
-        </a>
+        <%= link_to user_path(current_user.id), class: "dropdown-item" do %>
+          <i class="bi bi-person-circle opacity-20 me-2"></i>Mon profil
+        <%end%>
+        <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
+          <i class="bi bi-info-circle opacity-20 me-2"></i>Modifier mes infos
+        <%end%>
+        <%= link_to wishlists_path, class: "dropdown-item" do %>
+          <i class="bi bi-heart opacity-20 me-2"></i>Whishlist
+        <%end%>
         <a href="#" class="dropdown-item">
           <i class="fi-star opacity-60 me-2"></i>
           Reviews
