@@ -16,6 +16,7 @@
 //= require bootstrap.bundle.min
 //= require lightgallery.min.js
 //= require lg-fullscreen.min.js
+//= require jarallax.min.js
 //= require simplebar.min
 //= require smooth-scroll.polyfills
 //= require tiny-slider

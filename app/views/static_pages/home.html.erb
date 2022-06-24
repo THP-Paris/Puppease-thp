@@ -1,14 +1,99 @@
-<h1>App en production</h1>
 
-<%= link_to "se connecter", new_user_session_path %> 
 
-<%= link_to "s'inscrire", new_user_registration_path %>
+   <!-- Background image parallax -->
+<div class="jarallax bg-dark py-5" data-jarallax data-speed="0.5">
+  <span class="img-overlay"></span>
+  <div class="jarallax-img" style="background-image: url(https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);"></div>
+  <div class="container content-overlay text-center my-md-4 py-sm-5">
+    <h2 class="h1 text-light py-lg-5 my-5">Avec Puppease il n'a jamais été aussi simple de trouver l'amour pour son compagnon à quatre pattes</h2>
+  </div>
+</div>
 
-<%= link_to "se deconnecter", destroy_user_session_path, method: :delete %> 
 
-<%= link_to "inscrire mon chien", new_dog_path %>
-<%= link_to "modifier mes infos",  edit_user_registration_path %>
+    
+   <section class="container pb-lg-4 m-5">
+  <div class="row">
+  <div class="col">
+  <h3>Notre but</h4>
+  <p class= "text-justify">Mettre en relation les propriétaires de chiens et à travers eux trouver l'âme soeur pour leur compagnon canin </p>
 
-<% if user_signed_in? %>
-<%= link_to "voir ma page profil", user_path(current_user.id) %>
-<% end%>
+  <p>Donnez la possibilité à votre toutou de pouvoir continuer sa lignée et profitez de voir grandir des chiots</p>
+
+
+  
+                
+                  <p class="text-justify pb-2 delay-3 from-end d-none d-lg-block">
+                  Puppease se veut être un espace sérieux et dynamique répondant aux besoins des propriétaires d’animaux. Ces propriétaires trouveront une liste de partenaires idéaux pour leurs fidèles compagnons.</p>
+                  <p class="text-justify pb-2 delay-3 from-end d-none d-lg-block">
+                  Cherchez selon vos citères de choix pour votre ami canin afin de lui proposer le meilleur</p>
+
+                  <div class="delay-4 scale-up"><a class="btn btn-primary rounded-pill"<%=link_to "Inscrivez-vous", new_user_registration_path%></a></div>
+                
+  </div>
+  <div class="col">
+  <img class="rounded-2 img-fluid" alt="Rounded image" src="https://images.pexels.com/photos/406014/pexels-photo-406014.jpeg?auto=compress&cs=tinysrgb&w=800">
+    </div>
+
+    </section>
+
+
+ <section class="container px-3 mx-5">
+  <div class="row">
+  <div class="col">
+
+  <img class="rounded-2 img-fluid" alt="Rounded image" src="https://images.pexels.com/photos/248307/pexels-photo-248307.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
+  
+    </div>
+    
+  <div class="col">
+  <h1>Quick & Easy, Puppease</h1>
+  <p>Trouvez facilement un chien disponible à la reproduction grâce à des filtres et parmi notre viver grandissant de compagnons canins. </p>   
+  <ul class="list-unstyled delay-2 from-end">
+                    <li class="m-1"><i class="bi bi-house-door"></i> Renseignez votre ville</li>
+                    <li class="m-1"><i class="bi bi-info-circle"></i> Remplissez vos informations</li>
+                    <li class="m-1"><i class="bi bi-arrow-down-circle"></i> Inscrivez votre chien</li>
+                    <li class="m-1"><i class="bi bi-heart"></i></i> Ajouter les chiens en favoris</li>
+                  </ul>
+<p>Envoyez un message au maitre du chien et organisez une rencontre</p>
+                  <div class="delay-4 scale-up"><a class="btn btn-primary rounded-pill"<%=link_to "Voir nos chiens", dogs_path%></a></div>
+  </div>
+
+  </div>
+  </div>
+</section>
+</section>
+
+
+<section class="container p-3 m-5">
+
+<div class="row">
+<div class="col">
+<!-- Simple blockquote based testimonial -->
+<h6 class="py-lg-5 my-5">
+  <p><i class="bi bi-chat-right-quote"></i>  Merci à Puppease, grâce à eux j'ai pu trouver rapidement ce que je cherchais pour Rex : une femelle habitant aux alentours de chez moi pour pouvoir suivre la gestation au plus près. Le contact a été facile, c'est une réussite. </p>
+  <footer class="d-flex align-items-center">
+    <img class="rounded-circle me-1" src="https://source.unsplash.com/350x350/?woman?sig" width="48" alt="Avatar">
+    <div class="ps-2">
+      <h6 class="fs-base mb-0">Julie Edwards</h6>
+      <div class="text-muted fw-normal fs-sm">Propriétaire de Rex</div>
+    </div>
+  </footer>
+</h6>
+
+</div>
+<div class="col">
+<h6 class="py-lg-5 my-5 text-justify">
+  <p><i class="bi bi-chat-right-quote"></i>  Super facile pour moi de trouver un bon copain canin à ma chienne. Première rencontre timide mais nous avon finis par faire connaissance avec les maitres et une portée nous attend pour le mois prochain :) Merci Puppease</p>
+  <footer class="d-flex align-items-center">
+    <img class="rounded-circle me-1" src="https://source.unsplash.com/350x350/?man?sig" width="48" alt="Avatar">
+    <div class="ps-2">
+      <h6 class="fs-base mb-0">Raphael Phelps</h6>
+      <div class="text-muted fw-normal fs-sm">Propriétaire de Cannelle</div>
+    </div>
+  </footer>
+</h6>
+</div>
+</section>
+
+
+
