@@ -1,4 +1,3 @@
-
 <!-- Navbar with user account dropdown -->
 <header class="navbar navbar-expand-lg navbar-light bg-gradient shadow-sm">
   <div class="container">
@@ -12,15 +11,14 @@
     <!-- user menu-->
     <% if user_signed_in? %>
     <div class="dropdown order-lg-3">
-      <a href="#" class="d-inline-block py-1" data-bs-toggle="dropdown">
-        <img class="rounded-circle" src="#" width="40" alt="User">
+      <a href="#" class="d-inline-block py-1 px-3 text-light text-decoration-none" data-bs-toggle="dropdown">
+        <i class="bi bi-person-circle"></i> 
       </a>
       <div class="dropdown-menu dropdown-menu-end">
         <div class="d-flex align-items-start border-bottom px-3 py-1 mb-2" style="width: 16rem;">
-          <img class="rounded-circle" src="#" width="48" alt="User">
           <div class="ps-2">
-            <h6 class="fs-base mb-0">Robert Fox</h6>
-            <div class="fs-xs py-2">(302) 555-0107<br>robert_fox@gmail.com</div>
+            <h6 class="fs-base mb-0">mon nom</h6>
+            <div class="fs-xs py-2">mon telephone<br>mon email</div>
           </div>
         </div>
         <a href="#" class="dropdown-item">
